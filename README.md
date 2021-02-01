@@ -17,8 +17,9 @@ Visual Studio 2015/2017
 
 ## Dependencies
 
-* [Stylet](https://github.com/canton7/Stylet) - The web framework used
-* [Steamkit](https://github.com/SteamRE/SteamKit) - Dependency Management
+* [Stylet](https://github.com/canton7/Stylet) - MVVM framework
+* [Steamkit](https://github.com/SteamRE/SteamKit) - Used for the protobuffs
+* [Boiler](https://bitbucket.org/ACB/boiler/) - Used to get match history
 
 ## Authors
 
