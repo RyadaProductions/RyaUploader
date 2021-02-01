@@ -3,7 +3,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using RyaUploaderV2.Properties;
 using RyaUploaderV2.Services;
-using SteamKit2.GC.CSGO.Internal;
 using Stylet;
 
 namespace RyaUploaderV2.Models

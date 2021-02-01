@@ -36,13 +36,13 @@ namespace RyaUploaderV2.Services
 
             var matchList = _fileService.ReadMatches(_matchesFile);
 
-            Parallel.ForEach(matchList.matches, (matchInfo, state) =>
+            Parallel.ForEach(matchList.Matches, (matchInfo, state) =>
             {
-                var matchId = matchInfo.matchid;
-                var tvPort = matchInfo.watchablematchinfo.tv_port;
+                var matchId = matchInfo.Matchid;
+                var tvPort = matchInfo.Watchablematchinfo.TvPort;
 
                 // Gets the legacy reservationId if it exists otherwise it will take the last reservationId of the match.
-                var reservationId = matchInfo.roundstats_legacy?.reservationid ?? matchInfo.roundstatsall.Last().reservationid;
+                var reservationId = matchInfo.RoundstatsLegacy?.Reservationid ?? matchInfo.Roundstatsall.Last().Reservationid;
 
                 if (TryParse(matchId, reservationId, tvPort, out var shareCode))
                     demoUrlList.Add(shareCode);

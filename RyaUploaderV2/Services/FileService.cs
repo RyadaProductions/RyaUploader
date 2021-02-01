@@ -1,8 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Security.Cryptography;
-using ProtoBuf;
-using SteamKit2.GC.CSGO.Internal;
+using RyaUploaderV2.ProtoBufs;
 
 namespace RyaUploaderV2.Services
 {
@@ -48,7 +47,7 @@ namespace RyaUploaderV2.Services
         {
             using (var stream = File.OpenRead(file))
             {
-                return Serializer.Deserialize<CMsgGCCStrike15_v2_MatchList>(stream);
+                return CMsgGCCStrike15_v2_MatchList.Parser.ParseFrom(stream);
             }
         }
     }
