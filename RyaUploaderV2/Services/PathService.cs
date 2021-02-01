@@ -4,8 +4,21 @@ using System.Security.Cryptography;
 
 namespace RyaUploaderV2.Services
 {
-    public class PathService
+    public interface IPathService
     {
+        string BoilerPath { get; }
+
+        bool IsBoilerValid { get; }
+
+        string GetAppDataPath();
+    }
+
+    public class PathService : IPathService
+    {
+        public string BoilerPath => Path.Combine(Path.GetTempPath(), "RyaUploader", "boiler.exe");
+
+        public bool IsBoilerValid => GetSha1Hash(BoilerPath).Equals("80F2C8A1F51118FA450AB9E700645508172B01B8");
+
         /// <summary>
         /// Gets the hash in Sha1 format from a specific file. Used for validation to make sure people do not replace it with a malicious version
         /// </summary>

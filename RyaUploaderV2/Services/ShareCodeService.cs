@@ -9,6 +9,11 @@ using SteamKit2.GC.CSGO.Internal;
 
 namespace RyaUploaderV2.Services
 {
+    public interface IShareCodeService
+    {
+        List<string> GetNewestShareCodes();
+    }
+
     public class ShareCodeService
     {
         private readonly char[] _dictionary = {
@@ -19,7 +24,7 @@ namespace RyaUploaderV2.Services
 
         private readonly string _matchesFile;
 
-        public ShareCodeService(PathService pathService)
+        public ShareCodeService(IPathService pathService)
         {
             _matchesFile = pathService.GetAppDataPath();
         }
@@ -59,7 +64,7 @@ namespace RyaUploaderV2.Services
         /// <param name="reservationId">the reservation id of the match</param>
         /// <param name="tvPort">the port that goTV was run under</param>
         /// <returns>Csgo share link</returns>
-        public bool TryEncode(ulong matchId, ulong reservationId, uint tvPort, out string shareLink)
+        private bool TryEncode(ulong matchId, ulong reservationId, uint tvPort, out string shareLink)
         {
             try
             {
