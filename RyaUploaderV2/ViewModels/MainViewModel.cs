@@ -8,7 +8,7 @@ using Stylet;
 
 namespace RyaUploaderV2.ViewModels
 {
-    public class MainViewModel : PropertyChangedBase
+    public class MainViewModel : Screen
     {
         public string BoilerState { get; set; }
 

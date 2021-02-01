@@ -21,9 +21,9 @@ namespace RyaUploaderV2.Services
         }
 
         /// <summary>
-        /// Get the sharecode for a match. This is needed to upload it to csgostats
+        /// Get the sharecodes for the last 8 matches
         /// </summary>
-        /// <returns>sharecode</returns>
+        /// <returns>List of the last 8 shortcodes</returns>
         public List<string> GetShareCodes()
         {
             var demoUrlList = new List<string>();
@@ -70,10 +70,10 @@ namespace RyaUploaderV2.Services
         /// <summary>
         /// Encode a share code from required fields coming from a CDataGCCStrike15_v2_MatchInfo message.
         /// </summary>
-        /// <param name="matchId"></param>
-        /// <param name="reservationId"></param>
-        /// <param name="tvPort"></param>
-        /// <returns></returns>
+        /// <param name="matchId">The match id</param>
+        /// <param name="reservationId">the reservation id of the match</param>
+        /// <param name="tvPort">the port that goTV was run under</param>
+        /// <returns>ShareCode</returns>
         public string Encode(ulong matchId, ulong reservationId, uint tvPort)
         {
             var matchIdBytes = BitConverter.GetBytes(matchId);
