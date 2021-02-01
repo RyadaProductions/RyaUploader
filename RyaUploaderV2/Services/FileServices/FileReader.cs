@@ -15,6 +15,13 @@ namespace RyaUploaderV2.Services.FileServices
         /// <param name="file">path to the file you want to read</param>
         /// <returns>MatchList of the last 8 matches</returns>
         MatchList ReadProtobuf(string file);
+        
+        /// <summary>
+        /// Read and Deserialize the json file specified into a List of MatchModels.
+        /// </summary>
+        /// <param name="file">The Json file to read</param>
+        /// <returns>List of MatchModels</returns>
+        List<MatchModel> ReadMatchesFromJson(string file);
     }
 
     public class FileReader : IFileReader
@@ -28,16 +35,14 @@ namespace RyaUploaderV2.Services.FileServices
             }
         }
 
-        /// <summary>
-        /// Read and Deserialize the json file specified into a List of MatchModels.
-        /// </summary>
-        /// <param name="file">The Json file to read</param>
-        /// <returns>List of MatchModels</returns>
         public List<MatchModel> ReadMatchesFromJson(string file)
         {
-            Log.Information("Reading json file that contains a list of MatchModel.");
+            if (!File.Exists(file)) return new List<MatchModel>();
+
+            Log.Information("Reading previously saved matches");
             var content = File.ReadAllText(file);
-            return JsonConvert.DeserializeObject<List<MatchModel>>(content);
+
+            return string.IsNullOrEmpty(content) ? new List<MatchModel>() : JsonConvert.DeserializeObject<List<MatchModel>>(content);
         }
     }
 }

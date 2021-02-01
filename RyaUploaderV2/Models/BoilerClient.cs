@@ -7,6 +7,7 @@ using RyaUploaderV2.Properties;
 using RyaUploaderV2.Services;
 using RyaUploaderV2.Services.FileServices;
 using RyaUploaderV2.Services.ProtobufServices;
+using Serilog;
 using Stylet;
 
 namespace RyaUploaderV2.Models
@@ -36,7 +37,7 @@ namespace RyaUploaderV2.Models
 
         private readonly Timer _refreshTimer;
 
-        private readonly HashSet<MatchModel> _matches = new HashSet<MatchModel>();
+        private readonly HashSet<MatchModel> _matches;
 
         public BoilerClient(
             IUploader uploader, 
@@ -55,6 +56,7 @@ namespace RyaUploaderV2.Models
             _shareCodeConverter = shareCodeConverter;
             _protobufConverter = protobufConverter;
 
+            _matches = new HashSet<MatchModel>(_fileReader.ReadMatchesFromJson(_filePaths.JsonMatchesPath));
 
             _refreshTimer = new Timer(async e => { await RefreshProtobufAsync(); }, null, 0, 60000);
         }
@@ -106,16 +108,23 @@ namespace RyaUploaderV2.Models
 
                     var protobuf = _fileReader.ReadProtobuf(_filePaths.MatchListPath);
                     var matches = _protobufConverter.ProtobufToMatches(protobuf)
-                        .Where(match => !_matches.Contains(match))
+                        .Where(match => _matches.All(x => match.MatchId != x.MatchId))
                         .ToList();
+
+                    if (matches.Count == 0)
+                    {
+                        Log.Information("The protobuf did not contain new matches.");
+                        CurrentState = Resources.DialogNoNewerDemo;
+                        return;
+                    }
 
                     var shareCodes = _shareCodeConverter.ConvertMatchListToShareCodes(matches);
 
                     CurrentState = await _uploader.UploadShareCodes(shareCodes) ? "All matches have been uploaded" : "Could not get any sharecode from the last 8 demos.";
-                    
-                    _fileWriter.SaveMatchesToJson(_filePaths.JsonMatchesPath, matches);
 
-                    _matches.UnionWith(_matches);
+                    _matches.UnionWith(matches);
+
+                    _fileWriter.SaveMatchesToJson(_filePaths.JsonMatchesPath, _matches);
 
                     break;
                 default:

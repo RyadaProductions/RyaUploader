@@ -20,7 +20,7 @@ namespace RyaUploaderV2.Services.ProtobufServices
     {
         public IEnumerable<MatchModel> ProtobufToMatches(Protobuf protobuf)
         {
-            Log.Information("Converting a protobuf message into a list of MatchModels.");
+            Log.Information($"Converting {protobuf.Matches.Count} protobuf matches into MatchModels.");
             var matchModels = new List<MatchModel>();
 
             foreach (var match in protobuf.Matches)

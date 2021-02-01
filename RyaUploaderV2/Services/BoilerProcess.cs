@@ -28,7 +28,7 @@ namespace RyaUploaderV2.Services
 
         public async Task<int> StartBoilerAsync(CancellationToken cancellationToken)
         {
-            Log.Information("Starting boiler.exe to download the latest protobuf.");
+            Log.Information("Starting boiler.exe to download the latest protobuf message.");
             cancellationToken.ThrowIfCancellationRequested();
 
             var boiler = new Process

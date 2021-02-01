@@ -19,7 +19,7 @@ namespace RyaUploaderV2.Services
 
     public class ShareCodeConverter : IShareCodeConverter
     {
-        private const string _dictionary = "ABCDEFGHJKLMNOPQRSTUVWXYZabcdefhijkmnopqrstuvwxyz23456789";
+        private const string DICTIONARY = "ABCDEFGHJKLMNOPQRSTUVWXYZabcdefhijkmnopqrstuvwxyz23456789";
 
         public IEnumerable<string> ConvertMatchListToShareCodes(IEnumerable<MatchModel> matches)
         {
@@ -68,7 +68,7 @@ namespace RyaUploaderV2.Services
 
                 var big = new BigInteger(bytes.Reverse().ToArray());
 
-                var charArray = _dictionary.ToCharArray();
+                var charArray = DICTIONARY.ToCharArray();
                 var decryptedCode = "";
 
                 for (var i = 0; i < 25; i++)
