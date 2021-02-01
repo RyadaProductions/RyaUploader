@@ -105,32 +105,35 @@ namespace RyaUploaderV2.Models
                     break;
                 case 0:
                     CurrentState = Resources.BoilerSuccess;
-
-                    var protobuf = _fileReader.ReadProtobuf(_filePaths.MatchListPath);
-                    var matches = _protobufConverter.ProtobufToMatches(protobuf)
-                        .Where(match => _matches.All(x => match.MatchId != x.MatchId))
-                        .ToList();
-
-                    if (matches.Count == 0)
-                    {
-                        Log.Information("The protobuf did not contain new matches.");
-                        CurrentState = Resources.DialogNoNewerDemo;
-                        return;
-                    }
-
-                    var shareCodes = _shareCodeConverter.ConvertMatchListToShareCodes(matches);
-
-                    CurrentState = await _uploader.UploadShareCodes(shareCodes) ? "All matches have been uploaded" : "Could not get any sharecode from the last 8 demos.";
-
-                    _matches.UnionWith(matches);
-
-                    _fileWriter.SaveMatchesToJson(_filePaths.JsonMatchesPath, _matches);
-
+                    await HandleProtobuf();
                     break;
                 default:
                     CurrentState = Resources.UnknownError;
                     break;
             }
+        }
+
+        private async Task HandleProtobuf()
+        {
+            var protobuf = _fileReader.ReadProtobuf(_filePaths.MatchListPath);
+            var matches = _protobufConverter.ProtobufToMatches(protobuf)
+                .Where(match => _matches.All(x => match.MatchId != x.MatchId))
+                .ToList();
+
+            if (matches.Count == 0)
+            {
+                Log.Information("The protobuf did not contain new matches.");
+                CurrentState = Resources.DialogNoNewerDemo;
+                return;
+            }
+
+            var shareCodes = _shareCodeConverter.ConvertMatchListToShareCodes(matches);
+
+            CurrentState = await _uploader.UploadShareCodes(shareCodes) ? "All matches have been uploaded" : "Could not get any sharecode from the last 8 demos.";
+
+            _matches.UnionWith(matches);
+
+            _fileWriter.SaveMatchesToJson(_filePaths.JsonMatchesPath, _matches);
         }
 
         public void Dispose()
