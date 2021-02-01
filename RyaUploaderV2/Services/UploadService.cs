@@ -10,7 +10,7 @@ namespace RyaUploaderV2.Services
 {
     public interface IUploadService
     {
-        bool UploadShareCodes(List<string> shareCodes);
+        Task<bool> UploadShareCodes(List<string> shareCodes);
     }
 
     public class UploadService : IUploadService
@@ -23,12 +23,11 @@ namespace RyaUploaderV2.Services
         /// Uploads the last 8 matches to csgostats.gg
         /// </summary>
         /// <returns>status message</returns>
-        public bool UploadShareCodes(List<string> shareCodes)
+        public async Task<bool> UploadShareCodes(List<string> shareCodes)
         {
             if (shareCodes == null) return false;
             
-            var tasks = shareCodes.Select(async shareCode => await TryUploadAsync(shareCode));
-            Task.WhenAll(tasks);
+            await Task.WhenAll(shareCodes.Select(async shareCode => await TryUploadAsync(shareCode)));
 
             return true;
         }

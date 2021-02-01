@@ -40,14 +40,14 @@ namespace RyaUploaderV2.Models
         private async Task TimerCallbackAsync()
         {
             var result = await _boilerProcessService.StartBoilerAsync(_cts.Token);
-            HandleBoilerResult(result);
+            await HandleBoilerResult(result);
         }
 
         /// <summary>
         /// Handle the result by giving an understandable response to the codes that boiler returns
         /// </summary>
         /// <param name="result">The exit code that boiler returned after running</param>
-        private void HandleBoilerResult(int result)
+        private async Task HandleBoilerResult(int result)
         {
             switch (result)
             {
@@ -81,7 +81,7 @@ namespace RyaUploaderV2.Models
                     var matchList = _fileService.ReadMatches(_pathService.MatchFilePath);
                     var newestSharecodes = _shareCodeService.ConvertMatchListToShareCodes(matchList);
 
-                    CurrentState = _uploadService.UploadShareCodes(newestSharecodes) ? "All matches have been uploaded" : "Could not get any sharecode from the last 8 demos.";
+                    CurrentState = await _uploadService.UploadShareCodes(newestSharecodes) ? "All matches have been uploaded" : "Could not get any sharecode from the last 8 demos.";
                     break;
                 default:
                     CurrentState = Resources.UnknownError;
