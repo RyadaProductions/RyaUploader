@@ -30,11 +30,8 @@ namespace RyaUploaderV2.Services
             var windowsAppDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             var appDataFolder = Path.Combine(windowsAppDataFolder, "Ryada");
             appDataFolder = Path.Combine(appDataFolder, "RyaUploader");
-
-            if (!Directory.Exists(appDataFolder))
-            {
-                Directory.CreateDirectory(appDataFolder);
-            }
+            
+            Directory.CreateDirectory(appDataFolder);
 
             return appDataFolder + Path.DirectorySeparatorChar + "matches.dat";
         }

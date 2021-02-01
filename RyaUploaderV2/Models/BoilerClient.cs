@@ -14,7 +14,7 @@ namespace RyaUploaderV2.Models
 {
     public class BoilerClient
     {
-        public string CurrentState = "Started";
+        public string CurrentState { get; private set; } = "Started";
 
         public static readonly HttpClient Client = new HttpClient();
 
@@ -25,11 +25,18 @@ namespace RyaUploaderV2.Models
         private readonly PathService _pathService;
 
         private readonly Timer _refreshTimer;
+        private readonly string _boilerPath = Path.Combine(Path.GetTempPath(), "RyaUploader", "tempfile.exe");
 
         public BoilerClient(ShareCodeService shareCodeService, PathService pathService)
         {
             _shareCodeService = shareCodeService;
             _pathService = pathService;
+
+            if (!IsBoilerValid())
+            {
+                CurrentState = "Invalid Boiler version";
+                return;
+            }
 
             _refreshTimer = new Timer(async e => { await TimerCallback(); }, null, 0, 60000);
         }
@@ -44,26 +51,17 @@ namespace RyaUploaderV2.Models
         /// Start the process to get the latest matches
         /// </summary>
         /// <param name="ct"></param>
-        /// <param name="args"></param>
         /// <returns>the exit code from boiler</returns>
-        private async Task<int> StartBoiler(CancellationToken ct, string args = "")
+        private async Task<int> StartBoiler(CancellationToken ct)
         {
             ct.ThrowIfCancellationRequested();
-
-            var path = Path.Combine(Path.GetTempPath(), "RyaUploader", "tempfile.exe");
-            var hash = _pathService.GetSha1Hash(path);
-            if (!hash.Equals("80F2C8A1F51118FA450AB9E700645508172B01B8")) return 2;
-
-            //@@@ Not sure if this should remain for success of the list update
-            //Process[] currentProcess = Process.GetProcessesByName("csgo");
-            //if (currentProcess.Length > 0) currentProcess[0].Kill();
 
             var boiler = new Process
             {
                 StartInfo =
                 {
-                    FileName = path,
-                    Arguments = $"\"{_pathService.GetAppDataPath()}\" {args}",
+                    FileName = _boilerPath,
+                    Arguments = $"\"{_pathService.GetAppDataPath()}\"",
                     UseShellExecute = false,
                     CreateNoWindow = true
                 }
@@ -72,6 +70,12 @@ namespace RyaUploaderV2.Models
             await boiler.WaitForExitAsync(ct);
 
             return boiler.ExitCode;
+        }
+
+        private bool IsBoilerValid()
+        {
+            var hash = _pathService.GetSha1Hash(_boilerPath);
+            return hash.Equals("80F2C8A1F51118FA450AB9E700645508172B01B8");
         }
 
         /// <summary>
@@ -119,9 +123,11 @@ namespace RyaUploaderV2.Models
         /// </summary>
         public string UploadMatches()
         {
-            if (_shareCodeService.GetShareCodes() == null) return "Could not get any sharecode from the last 8 demos.";
+            var newestSharecodes = _shareCodeService.GetNewestShareCodes();
 
-            Parallel.ForEach(_shareCodeService.GetShareCodes(), async shareCode => { await Upload(shareCode); });
+            if (newestSharecodes == null) return "Could not get any sharecode from the last 8 demos.";
+
+            Parallel.ForEach(newestSharecodes, async shareCode => { await Upload(shareCode); });
             return "All matches have been uploaded";
         }
 
@@ -133,10 +139,7 @@ namespace RyaUploaderV2.Models
         {
             try
             {
-                if (_lastMatches.Contains(shareCode))
-                {
-                    return;
-                }
+                if (_lastMatches.Contains(shareCode)) return;
 
                 shareCode = shareCode.Replace(@"%20", @"%");
 
@@ -145,15 +148,14 @@ namespace RyaUploaderV2.Models
                 var response = await Client.PostAsync("https://csgostats.gg/match/upload", form);
 
                 response.EnsureSuccessStatusCode();
-                await response.Content.ReadAsStringAsync();
 
                 _lastMatches.Add(shareCode);
-                Console.WriteLine($"Uploaded: {shareCode}");
+                Debug.WriteLine($"Uploaded: {shareCode}");
             }
             catch (Exception e)
             {
-                Console.WriteLine($"Could not upload: {shareCode}");
-                Console.WriteLine(e);
+                Debug.WriteLine($"Could not upload: {shareCode}");
+                Debug.WriteLine(e);
             }
         }
     }
