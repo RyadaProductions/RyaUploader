@@ -1,11 +1,11 @@
 ﻿using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
-using RyaUploader.Extensions;
-using RyaUploader.Services.FileServices;
+using RyaUploader.Core.Extensions;
+using RyaUploader.Core.Services.FileServices;
 using Serilog;
 
-namespace RyaUploader.Services
+namespace RyaUploader.Core.Services
 {
     public interface IBoilerProcess
     {

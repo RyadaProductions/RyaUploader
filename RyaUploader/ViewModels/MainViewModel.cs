@@ -1,4 +1,4 @@
-﻿using RyaUploader.Models;
+﻿using RyaUploader.Core.Models;
 using Stylet;
 
 namespace RyaUploader.ViewModels

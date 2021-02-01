@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace RyaUploader.Services.FileServices
+namespace RyaUploader.Core.Services.FileServices
 {
     public interface IFilePaths
     {

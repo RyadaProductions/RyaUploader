@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Moq;
-using RyaUploader.Facade;
-using RyaUploader.Services.SteamServices;
+using RyaUploader.Core.Facade;
+using RyaUploader.Core.Services.SteamServices;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace RyaUploader.Test.Services

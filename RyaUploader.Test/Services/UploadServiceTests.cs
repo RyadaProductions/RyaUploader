@@ -2,8 +2,8 @@
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using RyaUploader.Facade;
-using RyaUploader.Services;
+using RyaUploader.Core.Facade;
+using RyaUploader.Core.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 

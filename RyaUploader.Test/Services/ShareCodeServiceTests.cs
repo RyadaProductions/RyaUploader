@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using RyaUploader.Models;
-using RyaUploader.Services.Converters;
+using RyaUploader.Core.Models;
+using RyaUploader.Core.Services.Converters;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace RyaUploader.Test.Services

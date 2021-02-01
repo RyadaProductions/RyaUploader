@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
-using RyaUploader.Models;
+using RyaUploader.Core.Models;
 using Serilog;
 
-namespace RyaUploader.Services.FileServices
+namespace RyaUploader.Core.Services.FileServices
 {
     public interface IFileWriter
     {

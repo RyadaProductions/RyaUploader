@@ -6,11 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using RyaUploader.Facade;
-using RyaUploader.Models;
+using RyaUploader.Core.Facade;
+using RyaUploader.Core.Models;
 using Serilog;
 
-namespace RyaUploader.Services.SteamServices
+namespace RyaUploader.Core.Services.SteamServices
 {
     public interface ISteamApi
     {

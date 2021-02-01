@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using RyaUploader.Services;
-using RyaUploader.Services.Converters;
-using RyaUploader.Services.FileServices;
+using RyaUploader.Core.Services;
+using RyaUploader.Core.Services.Converters;
+using RyaUploader.Core.Services.FileServices;
 using Serilog;
 using Stylet;
 
-namespace RyaUploader.Models
+namespace RyaUploader.Core.Models
 {
     public class BoilerClient : PropertyChangedBase, IDisposable
     {

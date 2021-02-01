@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Stylet;
 
-namespace RyaUploader.Models
+namespace RyaUploader.Core.Models
 {
     public class Match
     {

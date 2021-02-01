@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RyaUploader.Models
+namespace RyaUploader.Core.Models
 {
     public class PlayerScore
     {
