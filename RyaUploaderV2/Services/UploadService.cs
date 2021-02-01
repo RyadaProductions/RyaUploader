@@ -19,10 +19,14 @@ namespace RyaUploaderV2.Services
         private readonly ConcurrentBag<string> _lastMatches = new ConcurrentBag<string>();
 
         private readonly IShareCodeService _shareCodeService;
+        private readonly IFileService _fileService;
+        private readonly IPathService _pathService;
 
-        public UploadService(IShareCodeService shareCodeService)
+        public UploadService(IShareCodeService shareCodeService, IFileService fileService, IPathService pathService)
         {
             _shareCodeService = shareCodeService;
+            _fileService = fileService;
+            _pathService = pathService;
         }
         
         /// <summary>
@@ -31,7 +35,8 @@ namespace RyaUploaderV2.Services
         /// <returns>status message</returns>
         public string UploadMatches()
         {
-            var newestSharecodes = _shareCodeService.GetNewestDemoUrls();
+            var matchList = _fileService.ReadMatches(_pathService.GetMatchesPath());
+            var newestSharecodes = _shareCodeService.GetNewestDemoUrls(matchList);
 
             if (newestSharecodes == null) return "Could not get any sharecode from the last 8 demos.";
 

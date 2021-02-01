@@ -2,37 +2,26 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using RyaUploaderV2.ProtoBufs;
 
 namespace RyaUploaderV2.Services
 {
     public interface IShareCodeService
     {
-        List<string> GetNewestDemoUrls();
+        List<string> GetNewestDemoUrls(CMsgGCCStrike15_v2_MatchList matchList);
     }
 
     public class ShareCodeService : IShareCodeService
     {
         private string _dictionary = "ABCDEFGHJKLMNOPQRSTUVWXYZabcdefhijkmnopqrstuvwxyz23456789";
 
-        private readonly IPathService _pathService;
-
-        private readonly IFileService _fileService;
-
-        public ShareCodeService(IPathService pathService, IFileService fileService)
-        {
-            _pathService = pathService;
-            _fileService = fileService;
-        }
-
         /// <summary>
         /// Get the sharecodes for the last 8 matches
         /// </summary>
         /// <returns>List of the last 8 sharecodes</returns>
-        public List<string> GetNewestDemoUrls()
+        public List<string> GetNewestDemoUrls(CMsgGCCStrike15_v2_MatchList matchList)
         {
             var demoUrlList = new List<string>();
-
-            var matchList = _fileService.ReadMatches(_pathService.GetMatchesPath());
 
             foreach (var matchInfo in matchList.Matches)
             {

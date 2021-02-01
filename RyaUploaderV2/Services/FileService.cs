@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Security.Cryptography;
-using RyaUploaderV2.ProtoBufs;
+using MatchList = RyaUploaderV2.ProtoBufs.CMsgGCCStrike15_v2_MatchList;
 
 namespace RyaUploaderV2.Services
 {
@@ -9,7 +9,7 @@ namespace RyaUploaderV2.Services
     { 
         bool IsBoilerValid { get; }
 
-        CMsgGCCStrike15_v2_MatchList ReadMatches(string file);
+        MatchList ReadMatches(string file);
     }
 
     public class FileService : IFileService
@@ -43,11 +43,11 @@ namespace RyaUploaderV2.Services
         /// </summary>
         /// <param name="file">path to the file you want to read</param>
         /// <returns>MatchList of the last 8 matches</returns>
-        public CMsgGCCStrike15_v2_MatchList ReadMatches(string file)
+        public MatchList ReadMatches(string file)
         {
             using (var stream = File.OpenRead(file))
             {
-                return CMsgGCCStrike15_v2_MatchList.Parser.ParseFrom(stream);
+                return MatchList.Parser.ParseFrom(stream);
             }
         }
     }
