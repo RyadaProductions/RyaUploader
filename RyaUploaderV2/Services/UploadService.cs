@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
@@ -9,7 +10,7 @@ namespace RyaUploaderV2.Services
 {
     public interface IUploadService
     {
-        string UploadMatches();
+        bool UploadShareCodes(List<string> shareCodes);
     }
 
     public class UploadService : IUploadService
@@ -17,31 +18,19 @@ namespace RyaUploaderV2.Services
         private static readonly HttpClient Client = new HttpClient();
         
         private readonly ConcurrentBag<string> _lastMatches = new ConcurrentBag<string>();
-
-        private readonly IShareCodeService _shareCodeService;
-        private readonly IFileService _fileService;
-        private readonly IPathService _pathService;
-
-        public UploadService(IShareCodeService shareCodeService, IFileService fileService, IPathService pathService)
-        {
-            _shareCodeService = shareCodeService;
-            _fileService = fileService;
-            _pathService = pathService;
-        }
         
         /// <summary>
         /// Uploads the last 8 matches to csgostats.gg
         /// </summary>
         /// <returns>status message</returns>
-        public string UploadMatches()
+        public bool UploadShareCodes(List<string> shareCodes)
         {
-            var matchList = _fileService.ReadMatches(_pathService.GetMatchesPath());
-            var newestSharecodes = _shareCodeService.GetNewestDemoUrls(matchList);
+            if (shareCodes == null) return false;
+            
+            var tasks = shareCodes.Select(async shareCode => await TryUploadAsync(shareCode));
+            Task.WhenAll(tasks);
 
-            if (newestSharecodes == null) return "Could not get any sharecode from the last 8 demos.";
-
-            Parallel.ForEach(newestSharecodes, async shareCode => { await TryUploadAsync(shareCode); });
-            return "All matches have been uploaded";
+            return true;
         }
 
         /// <summary>

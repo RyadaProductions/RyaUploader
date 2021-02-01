@@ -8,7 +8,7 @@ namespace RyaUploaderV2.Services
 {
     public interface IShareCodeService
     {
-        List<string> GetNewestDemoUrls(CMsgGCCStrike15_v2_MatchList matchList);
+        List<string> ConvertMatchListToShareCodes(CMsgGCCStrike15_v2_MatchList matchList);
     }
 
     public class ShareCodeService : IShareCodeService
@@ -19,7 +19,7 @@ namespace RyaUploaderV2.Services
         /// Get the sharecodes for the last 8 matches
         /// </summary>
         /// <returns>List of the last 8 sharecodes</returns>
-        public List<string> GetNewestDemoUrls(CMsgGCCStrike15_v2_MatchList matchList)
+        public List<string> ConvertMatchListToShareCodes(CMsgGCCStrike15_v2_MatchList matchList)
         {
             var demoUrlList = new List<string>();
 
