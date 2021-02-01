@@ -20,6 +20,7 @@ Visual Studio 2015/2017
 * [Stylet](https://github.com/canton7/Stylet) - MVVM framework
 * [Google Protobuf](https://github.com/google/protobuf/tree/master/csharp) - Protobuf deserialization
 * [Boiler](https://bitbucket.org/ACB/boiler/) - Used to get match history
+* [Hardcodet.NotifyIcon.Wpf](https://www.nuget.org/packages/Hardcodet.NotifyIcon.Wpf/) - TrayIcon
 
 ## Authors
 
