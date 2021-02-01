@@ -18,12 +18,16 @@ Visual Studio 2015/2017
 ## Dependencies
 
 * [Stylet](https://github.com/canton7/Stylet) - MVVM framework
-* [Steamkit](https://github.com/SteamRE/SteamKit) - Used for the protobuffs
+* [Google Protobuf](https://github.com/google/protobuf/tree/master/csharp) - Protobuf deserialization
 * [Boiler](https://bitbucket.org/ACB/boiler/) - Used to get match history
 
 ## Authors
 
 * **Ryada** - *Initial work* - [RyadaProductions](https://github.com/RyadaProductions)
+
+## Special Thanks
+
+* ObsidianMinor - generated protobuffs to use with google.protobuf
 
 ## License
 
