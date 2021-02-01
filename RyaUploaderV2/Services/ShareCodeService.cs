@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
-using System.Threading.Tasks;
-using RyaUploaderV2.Models;
 
 namespace RyaUploaderV2.Services
 {
@@ -16,13 +14,13 @@ namespace RyaUploaderV2.Services
     {
         private string _dictionary = "ABCDEFGHJKLMNOPQRSTUVWXYZabcdefhijkmnopqrstuvwxyz23456789";
 
-        private readonly string _matchesFile;
+        private readonly IPathService _pathService;
 
         private readonly IFileService _fileService;
 
         public ShareCodeService(IPathService pathService, IFileService fileService)
         {
-            _matchesFile = pathService.GetMatchesPath();
+            _pathService = pathService;
             _fileService = fileService;
         }
 
@@ -34,9 +32,9 @@ namespace RyaUploaderV2.Services
         {
             var demoUrlList = new List<string>();
 
-            var matchList = _fileService.ReadMatches(_matchesFile);
+            var matchList = _fileService.ReadMatches(_pathService.GetMatchesPath());
 
-            Parallel.ForEach(matchList.Matches, (matchInfo, state) =>
+            foreach (var matchInfo in matchList.Matches)
             {
                 var matchId = matchInfo.Matchid;
                 var tvPort = matchInfo.Watchablematchinfo.TvPort;
@@ -46,7 +44,7 @@ namespace RyaUploaderV2.Services
 
                 if (TryParse(matchId, reservationId, tvPort, out var shareCode))
                     demoUrlList.Add(shareCode);
-            });
+            }
 
             return demoUrlList;
         }
