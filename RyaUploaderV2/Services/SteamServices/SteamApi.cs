@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using RyaUploaderV2.Facade;
 using RyaUploaderV2.Models;
 using Serilog;
 
@@ -18,11 +19,11 @@ namespace RyaUploaderV2.Services.SteamServices
 
     public class SteamApi : ISteamApi
     {
-        private readonly HttpClient _client;
+        private readonly IHttpClient _client;
         // TODO: change this to something else when commiting
-        private const string KEY = "";
+        private const string KEY = "3C97DE56AF018917F183FB805DA6B17B";
         
-        public SteamApi(HttpClient client)
+        public SteamApi(IHttpClient client)
         {
             _client = client;
         }

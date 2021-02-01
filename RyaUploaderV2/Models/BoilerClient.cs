@@ -57,9 +57,8 @@ namespace RyaUploaderV2.Models
             _protobufConverter = protobufConverter;
 
             Matches = new BindableCollection<MatchModel>(_fileReader.ReadMatchesFromJson(_filePaths.JsonMatchesPath));
-#if !DEBUG
+
             _refreshTimer = new Timer(async e => { await RefreshProtobufAsync(); }, null, 0, 60000);
-#endif
         }
 
         /// <summary>

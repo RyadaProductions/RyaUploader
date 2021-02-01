@@ -122,6 +122,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Extensions\WindowExtensions.cs" />
+    <Compile Include="Facade\HttpClientFacade.cs" />
     <Compile Include="Models\MatchModel.cs" />
     <Compile Include="Models\PlayerModel.cs" />
     <Compile Include="ProtoBuffs\CsgoMatchlist.cs" />

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using RyaUploaderV2.Facade;
 using Serilog;
 
 namespace RyaUploaderV2.Services
@@ -19,9 +20,9 @@ namespace RyaUploaderV2.Services
 
     public class Uploader : IUploader
     {
-        private readonly HttpClient _client;
+        private readonly IHttpClient _client;
         
-        public Uploader(HttpClient client)
+        public Uploader(IHttpClient client)
         {
             _client = client;
         }
