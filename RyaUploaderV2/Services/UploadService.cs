@@ -24,8 +24,7 @@ namespace RyaUploaderV2.Services
         {
             _shareCodeService = shareCodeService;
         }
-
-
+        
         /// <summary>
         /// Uploads the last 8 matches to csgostats.gg
         /// </summary>

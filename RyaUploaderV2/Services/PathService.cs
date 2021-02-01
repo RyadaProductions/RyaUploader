@@ -10,7 +10,7 @@ namespace RyaUploaderV2.Services
 
         bool IsBoilerValid { get; }
 
-        string GetAppDataPath();
+        string GetMatchesPath();
     }
 
     public class PathService : IPathService
@@ -35,10 +35,10 @@ namespace RyaUploaderV2.Services
         }
 
         /// <summary>
-        /// Gets the save folder located in Appdata.
+        /// Gets the save folder located in Appdata. If it does not exist it will also be created
         /// </summary>
         /// <returns>Path to the cache</returns>
-        public string GetAppDataPath()
+        private string GetAppDataPath()
         {
             var windowsAppDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             var appDataFolder = Path.Combine(windowsAppDataFolder, "Ryada");
@@ -46,7 +46,12 @@ namespace RyaUploaderV2.Services
             
             Directory.CreateDirectory(appDataFolder);
 
-            return appDataFolder + Path.DirectorySeparatorChar + "matches.dat";
+            return appDataFolder;
+        }
+
+        public string GetMatchesPath()
+        {
+            return Path.Combine(GetAppDataPath() + "matches.dat");
         }
     }
 }

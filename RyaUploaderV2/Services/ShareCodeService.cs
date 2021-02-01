@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Numerics;
 using System.Threading.Tasks;
-using ProtoBuf;
-using SteamKit2.GC.CSGO.Internal;
 
 namespace RyaUploaderV2.Services
 {
     public interface IShareCodeService
     {
-        List<string> GetNewestShareCodes();
+        List<string> GetNewestDemoUrls();
     }
 
     public class ShareCodeService : IShareCodeService
@@ -24,22 +21,23 @@ namespace RyaUploaderV2.Services
 
         private readonly string _matchesFile;
 
-        public ShareCodeService(IPathService pathService)
+        private readonly IFileService _fileService;
+
+        public ShareCodeService(IPathService pathService, IFileService fileService)
         {
-            _matchesFile = pathService.GetAppDataPath();
+            _matchesFile = pathService.GetMatchesPath();
+            _fileService = fileService;
         }
 
         /// <summary>
         /// Get the sharecodes for the last 8 matches
         /// </summary>
         /// <returns>List of the last 8 shortcodes</returns>
-        public List<string> GetNewestShareCodes()
+        public List<string> GetNewestDemoUrls()
         {
             var demoUrlList = new List<string>();
-
-            using (var file = File.OpenRead(_matchesFile))
-            {
-                var matchList = Serializer.Deserialize<CMsgGCCStrike15_v2_MatchList>(file);
+            
+                var matchList = _fileService.ReadMatches(_matchesFile);
 
                 Parallel.ForEach(matchList.matches, (matchInfo, state) =>
                 {
@@ -52,13 +50,12 @@ namespace RyaUploaderV2.Services
                     if (TryEncode(matchId, reservationId, tvPort, out var shareCode))
                         demoUrlList.Add($@"steam://rungame/730/XXXXXXXXXXXXXXXXX/+csgo_download_match%{shareCode}");
                 });
-            }
 
             return demoUrlList;
         }
 
         /// <summary>
-        /// Tries to Encode a share code with the required fields coming from a CDataGCCStrike15_v2_MatchInfo message.
+        /// Tries to Encode a sharecode with the required fields coming from a CDataGCCStrike15_v2_MatchInfo message.
         /// </summary>
         /// <param name="matchId">The match id</param>
         /// <param name="reservationId">the reservation id of the match</param>
