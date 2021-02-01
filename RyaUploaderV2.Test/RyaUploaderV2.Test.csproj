@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Services\ShareCodeServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\UploadServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

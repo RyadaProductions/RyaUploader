@@ -13,7 +13,7 @@ namespace RyaUploaderV2.Services
 
     public class ShareCodeService : IShareCodeService
     {
-        private string _dictionary = "ABCDEFGHJKLMNOPQRSTUVWXYZabcdefhijkmnopqrstuvwxyz23456789";
+        private const string _dictionary = "ABCDEFGHJKLMNOPQRSTUVWXYZabcdefhijkmnopqrstuvwxyz23456789";
 
         /// <summary>
         /// Get the sharecodes for the last 8 matches
