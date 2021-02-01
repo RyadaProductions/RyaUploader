@@ -24,7 +24,7 @@ namespace RyaUploaderV2.Services
         /// </summary>
         /// <param name="filePath">The path to the file that you want to get the hash from</param>
         /// <returns>sha1 hash</returns>
-        public string GetSha1Hash(string filePath)
+        private string GetSha1Hash(string filePath)
         {
             using (var stream = File.OpenRead(filePath))
             {

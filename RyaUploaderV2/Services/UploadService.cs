@@ -12,7 +12,7 @@ namespace RyaUploaderV2.Services
         string UploadMatches();
     }
 
-    public class UploadService
+    public class UploadService : IUploadService
     {
         private static readonly HttpClient Client = new HttpClient();
         

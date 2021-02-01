@@ -14,7 +14,7 @@ namespace RyaUploaderV2.Services
         List<string> GetNewestShareCodes();
     }
 
-    public class ShareCodeService
+    public class ShareCodeService : IShareCodeService
     {
         private readonly char[] _dictionary = {
             'A','B','D','E','F','G','H','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
@@ -63,7 +63,8 @@ namespace RyaUploaderV2.Services
         /// <param name="matchId">The match id</param>
         /// <param name="reservationId">the reservation id of the match</param>
         /// <param name="tvPort">the port that goTV was run under</param>
-        /// <returns>Csgo share link</returns>
+        /// <param name="shareLink">Returns the sharelink that was created by the method</param>
+        /// <returns>True when succesfull, False when failed</returns>
         private bool TryEncode(ulong matchId, ulong reservationId, uint tvPort, out string shareLink)
         {
             try
