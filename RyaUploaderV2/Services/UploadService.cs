@@ -43,7 +43,7 @@ namespace RyaUploaderV2.Services
         /// Try to upload a specific match to csgostats.gg
         /// </summary>
         /// <param name="shareCode"></param>
-        public async Task TryUploadAsync(string shareCode)
+        private async Task TryUploadAsync(string shareCode)
         {
             try
             {

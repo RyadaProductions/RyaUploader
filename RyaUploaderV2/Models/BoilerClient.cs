@@ -1,18 +1,20 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using RyaUploaderV2.Properties;
 using RyaUploaderV2.Services;
+using SteamKit2.GC.CSGO.Internal;
 using Stylet;
 
 namespace RyaUploaderV2.Models
 {
-    public class BoilerClient : PropertyChangedBase
+    public class BoilerClient : PropertyChangedBase, IDisposable
     {
         private string _currentState = "Started";
         public string CurrentState
         {
             get => _currentState; 
-            set => SetAndNotify(ref _currentState, value); 
+            set => SetAndNotify(ref _currentState, value);
         }
 
         private readonly CancellationTokenSource _cts = new CancellationTokenSource();
@@ -76,6 +78,12 @@ namespace RyaUploaderV2.Models
                     CurrentState = Resources.UnknownError;
                     break;
             }
+        }
+
+        public void Dispose()
+        {
+            _cts?.Dispose();
+            _refreshTimer?.Dispose();
         }
     }
 }
