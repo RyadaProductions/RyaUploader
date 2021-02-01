@@ -144,9 +144,9 @@ namespace RyaUploaderV2.Models
         {
             try
             {
-                if (_lastMatches.Contains(shareCode)) return;
+                if (string.IsNullOrEmpty(shareCode) || _lastMatches.Contains(shareCode)) return;
 
-                shareCode = shareCode.Replace(@"%20", @"%");
+                _lastMatches.Add(shareCode);
 
                 var form = new MultipartFormDataContent { { new StringContent(shareCode), "sharecode" } };
 
@@ -154,7 +154,6 @@ namespace RyaUploaderV2.Models
 
                 response.EnsureSuccessStatusCode();
 
-                _lastMatches.Add(shareCode);
                 Debug.WriteLine($"Uploaded: {shareCode}");
             }
             catch (Exception e)
