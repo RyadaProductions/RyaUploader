@@ -10,18 +10,18 @@ namespace RyaUploaderV2.Services.ProtobufServices
         /// <summary>
         /// Convert a deserialised protobuf matchlist into mutliple MatchModels
         /// </summary>
-        /// <param name="matchList">Deserialised protobuf message received from Valve</param>
+        /// <param name="protobuf">Deserialised protobuf message received from Valve</param>
         /// <returns>list of MatchModels</returns>
-        IEnumerable<MatchModel> ProtobufToMatchList(Protobuf matchList);
+        IEnumerable<MatchModel> ProtobufToMatches(Protobuf protobuf);
     }
 
     public class ProtobufConverter : IProtobufConverter
     {
-        public IEnumerable<MatchModel> ProtobufToMatchList(Protobuf matchList)
+        public IEnumerable<MatchModel> ProtobufToMatches(Protobuf protobuf)
         {
             var matchModels = new List<MatchModel>();
 
-            foreach (var match in matchList.Matches)
+            foreach (var match in protobuf.Matches)
             {
                 var lastRound = match.Roundstatsall.Last();
 

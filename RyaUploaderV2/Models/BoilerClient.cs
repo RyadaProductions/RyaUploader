@@ -32,7 +32,7 @@ namespace RyaUploaderV2.Models
 
         private readonly Timer _refreshTimer;
 
-        private readonly HashSet<MatchModel> _matchList = new HashSet<MatchModel>();
+        private readonly HashSet<MatchModel> _matches = new HashSet<MatchModel>();
 
         public BoilerClient(IUploader uploader, IBoilerProcess boilerProcess, IFileReader fileReader, IFileWriter fileWriter, 
             IFilePaths filePaths, IShareCodeConverter shareCodeConverter, IProtobufConverter protobufConverter)
@@ -55,17 +55,17 @@ namespace RyaUploaderV2.Models
         /// </summary>
         private async Task RefreshProtobufAsync()
         {
-            var result = await _boilerProcess.StartBoilerAsync(_cts.Token);
-            await HandleBoilerResult(result);
+            var exitCode = await _boilerProcess.StartBoilerAsync(_cts.Token);
+            await HandleBoilerExitCode(exitCode);
         }
 
         /// <summary>
-        /// Handle the result by giving an understandable response to the codes that boiler returns
+        /// Handle the exitCode by giving an understandable response to the codes that boiler returns
         /// </summary>
-        /// <param name="result">The exit code that boiler returned after running</param>
-        private async Task HandleBoilerResult(int result)
+        /// <param name="exitCode">The exit code that boiler returned after running</param>
+        private async Task HandleBoilerExitCode(int exitCode)
         {
-            switch (result)
+            switch (exitCode)
             {
                 case 1:
                     CurrentState = Resources.DialogBoilerNotFound;
@@ -94,16 +94,18 @@ namespace RyaUploaderV2.Models
                 case 0:
                     CurrentState = Resources.BoilerSuccess;
 
-                    var protobuf = _fileReader.ReadMatchList(_filePaths.MatchListPath);
-                    var matchList = _protobufConverter.ProtobufToMatchList(protobuf);
+                    var protobuf = _fileReader.ReadProtobuf(_filePaths.MatchListPath);
+                    var matches = _protobufConverter.ProtobufToMatches(protobuf)
+                        .Where(match => !_matches.Contains(match))
+                        .ToList();
 
-                    matchList = matchList.Where(x => !_matchList.Contains(x)).ToList();
+                    var shareCodes = _shareCodeConverter.ConvertMatchListToShareCodes(matches);
 
-                    var newestShareCodes = _shareCodeConverter.ConvertMatchListToShareCodes(matchList);
-
-                    CurrentState = await _uploader.UploadShareCodes(newestShareCodes) ? "All matches have been uploaded" : "Could not get any sharecode from the last 8 demos.";
+                    CurrentState = await _uploader.UploadShareCodes(shareCodes) ? "All matches have been uploaded" : "Could not get any sharecode from the last 8 demos.";
                     
-                    _fileWriter.SaveMatchesToJson(_filePaths.JsonMatchesPath, matchList);
+                    _fileWriter.SaveMatchesToJson(_filePaths.JsonMatchesPath, matches);
+
+                    _matches.UnionWith(_matches);
 
                     break;
                 default:

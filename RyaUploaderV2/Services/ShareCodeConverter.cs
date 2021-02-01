@@ -22,7 +22,7 @@ namespace RyaUploaderV2.Services
 
         public IEnumerable<string> ConvertMatchListToShareCodes(IEnumerable<MatchModel> matchList)
         {
-            var demoUrlList = new List<string>();
+            var shareCodes = new List<string>();
 
             foreach (var matchInfo in matchList)
             {
@@ -33,10 +33,10 @@ namespace RyaUploaderV2.Services
                 var reservationId = matchInfo.ReservationId;
 
                 if (TryParse(matchId, reservationId, tvPort, out var shareCode))
-                    demoUrlList.Add(shareCode);
+                    shareCodes.Add(shareCode);
             }
 
-            return demoUrlList;
+            return shareCodes;
         }
 
         /// <summary>
@@ -45,9 +45,9 @@ namespace RyaUploaderV2.Services
         /// <param name="matchId">The match id</param>
         /// <param name="reservationId">the reservation id of the match</param>
         /// <param name="tvPort">the port that goTV was run under</param>
-        /// <param name="shareLink">Returns the sharelink that was created by the method</param>
+        /// <param name="shareCode">Returns the sharelink that was created by the method</param>
         /// <returns>True when succesfull, False when failed</returns>
-        private bool TryParse(ulong matchId, ulong reservationId, uint tvPort, out string shareLink)
+        private bool TryParse(ulong matchId, ulong reservationId, uint tvPort, out string shareCode)
         {
             try
             {
@@ -66,21 +66,21 @@ namespace RyaUploaderV2.Services
                 var big = new BigInteger(bytes.Reverse().ToArray());
 
                 var charArray = _dictionary.ToCharArray();
-                var shareCode = "";
+                var decryptedCode = "";
 
                 for (var i = 0; i < 25; i++)
                 {
                     BigInteger.DivRem(big, charArray.Length, out var remainder);
-                    shareCode += charArray[(int)remainder];
+                    decryptedCode += charArray[(int)remainder];
                     big = BigInteger.Divide(big, charArray.Length);
                 }
-                shareLink =
-                    $"CSGO-{shareCode.Substring(0, 5)}-{shareCode.Substring(5, 5)}-{shareCode.Substring(10, 5)}-{shareCode.Substring(15, 5)}-{shareCode.Substring(20, 5)}";
+                shareCode =
+                    $"CSGO-{decryptedCode.Substring(0, 5)}-{decryptedCode.Substring(5, 5)}-{decryptedCode.Substring(10, 5)}-{decryptedCode.Substring(15, 5)}-{decryptedCode.Substring(20, 5)}";
                 return true;
             }
             catch
             {
-                shareLink = "";
+                shareCode = "";
                 return false;
             }
         }

@@ -13,12 +13,12 @@ namespace RyaUploaderV2.Services.FileServices
         /// </summary>
         /// <param name="file">path to the file you want to read</param>
         /// <returns>MatchList of the last 8 matches</returns>
-        MatchList ReadMatchList(string file);
+        MatchList ReadProtobuf(string file);
     }
 
     public class FileReader : IFileReader
     {
-        public MatchList ReadMatchList(string file)
+        public MatchList ReadProtobuf(string file)
         {
             using (var stream = File.OpenRead(file))
             {
