@@ -68,7 +68,7 @@ namespace RyaUploaderV2.Models
         private async Task RefreshProtobufAsync()
         {
             var exitCode = await _boilerProcess.StartBoilerAsync(_cts.Token);
-            await HandleBoilerExitCode(exitCode);
+            await HandleBoilerExitCode(exitCode).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace RyaUploaderV2.Models
                     break;
                 case 0:
                     CurrentState = Resources.BoilerSuccess;
-                    await HandleProtobuf();
+                    await HandleProtobuf().ConfigureAwait(false);
                     break;
                 default:
                     CurrentState = Resources.UnknownError;
