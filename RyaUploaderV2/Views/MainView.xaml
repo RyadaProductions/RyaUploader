@@ -8,7 +8,160 @@
       d:DataContext="{d:DesignInstance viewModels:MainViewModel}"
       BorderBrush="#66000000"
       BorderThickness="3,0,3,3">
+
     <Grid>
-        <TextBlock Text="{Binding Client.CurrentState}" Foreground="White" HorizontalAlignment="Center"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="{Binding Client.CurrentState}" HorizontalAlignment="Center" Grid.Row="0"/>
+
+        <DataGrid Name="MainGrid" ItemsSource="{Binding Client.Matches}" AutoGenerateColumns="False" Grid.Row="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Date" Binding="{Binding Date}"/>
+                <DataGridTextColumn Header="MatchId" Binding="{Binding MatchId}"/>
+                <DataGridCheckBoxColumn Header="Victory" Binding="{Binding Victory}" />
+            </DataGrid.Columns>
+            
+            <DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="Team1" Grid.Column="0" Grid.Row="0"/>
+                        <DataGrid ItemsSource="{Binding Team1ScoreBoard}" AutoGenerateColumns="True" Grid.Column="0" Grid.Row="1"/>
+
+                        <TextBlock Text="Team2" Grid.Column="1" Grid.Row="0"/>
+                        <DataGrid ItemsSource="{Binding Team2ScoreBoard}" AutoGenerateColumns="True" Grid.Column="1" Grid.Row="1"/>
+                    </Grid>
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>
+        </DataGrid>
     </Grid>
+
+
+    <UserControl.Resources>
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="Foreground" Value="White" />
+        </Style>
+
+        <Style TargetType="{x:Type DataGridColumnHeader}">
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Height" Value="20" />
+        </Style>
+
+        <Style TargetType="{x:Type DataGridRowHeader}">
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Height" Value="20" />
+        </Style>
+
+        <Style TargetType="{x:Type DataGridRow}">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="Transparent" />
+        </Style>
+
+        <Style TargetType="{x:Type DataGrid}">
+            <Setter Property="IsReadOnly" Value="True" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="CanUserReorderColumns" Value="False" />
+            <Setter Property="CanUserResizeColumns" Value="False" />
+            <Setter Property="CanUserSortColumns" Value="False" />
+        </Style>
+
+        <Style TargetType="{x:Type DataGridCell}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type DataGridCell}">
+                        <Border x:Name="border"
+                                Background="Transparent"
+                                BorderBrush="Transparent"
+                                BorderThickness="1"
+                                SnapsToDevicePixels="True">
+
+                            <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ScrollBarPageButton" TargetType="{x:Type RepeatButton}">
+            <Setter Property="OverridesDefaultStyle" Value="true"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Focusable" Value="false"/>
+            <Setter Property="IsTabStop" Value="false"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RepeatButton}">
+                        <Rectangle Fill="{TemplateBinding Background}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="VerticalThumb" TargetType="{x:Type Thumb}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Thumb}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="4" />
+                                <RowDefinition Height="4" />
+                                <RowDefinition />
+                                <RowDefinition Height="4" />
+                                <RowDefinition Height="4" />
+                            </Grid.RowDefinitions>
+                            <Ellipse Grid.Row="0" Grid.RowSpan="2" Fill="#FFF4F4F5" />
+                            <Rectangle Grid.Row="1" Grid.RowSpan="3" Fill="#FFF4F4F5" />
+                            <Ellipse Grid.Row="3" Grid.RowSpan="2" Fill="#FFF4F4F5" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="{x:Type ScrollBar}">
+            <Setter Property="Stylus.IsPressAndHoldEnabled" Value="false"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="false"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="Width" Value="10"/>
+            <Setter Property="MinWidth" Value="10"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ScrollBar}">
+                        <Grid x:Name="Bg" SnapsToDevicePixels="true" Background="#7FBFBFBF">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.00001*"/>
+                            </Grid.RowDefinitions>
+                            <Track x:Name="PART_Track" IsDirectionReversed="true" IsEnabled="{TemplateBinding IsMouseOver}" Grid.Row="0">
+                                <Track.DecreaseRepeatButton>
+                                    <RepeatButton Command="{x:Static ScrollBar.PageUpCommand}" Style="{StaticResource ScrollBarPageButton}"/>
+                                </Track.DecreaseRepeatButton>
+                                <Track.IncreaseRepeatButton>
+                                    <RepeatButton Command="{x:Static ScrollBar.PageDownCommand}" Style="{StaticResource ScrollBarPageButton}"/>
+                                </Track.IncreaseRepeatButton>
+                                <Track.Thumb>
+                                    <Thumb Style="{DynamicResource VerticalThumb}" Width="8"/>
+                                </Track.Thumb>
+                            </Track>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
 </UserControl>
+

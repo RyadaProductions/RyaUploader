@@ -25,6 +25,8 @@ namespace RyaUploaderV2.Models
             set => SetAndNotify(ref _currentState, value);
         }
 
+        public BindableCollection<MatchModel> Matches { get; set; }
+
         private readonly CancellationTokenSource _cts = new CancellationTokenSource();
         
         private readonly IUploader _uploader;
@@ -36,8 +38,6 @@ namespace RyaUploaderV2.Models
         private readonly IProtobufConverter _protobufConverter;
 
         private readonly Timer _refreshTimer;
-
-        private readonly HashSet<MatchModel> _matches;
 
         public BoilerClient(
             IUploader uploader, 
@@ -56,9 +56,10 @@ namespace RyaUploaderV2.Models
             _shareCodeConverter = shareCodeConverter;
             _protobufConverter = protobufConverter;
 
-            _matches = new HashSet<MatchModel>(_fileReader.ReadMatchesFromJson(_filePaths.JsonMatchesPath));
-
+            Matches = new BindableCollection<MatchModel>(_fileReader.ReadMatchesFromJson(_filePaths.JsonMatchesPath));
+#if !DEBUG
             _refreshTimer = new Timer(async e => { await RefreshProtobufAsync(); }, null, 0, 60000);
+#endif
         }
 
         /// <summary>
@@ -117,7 +118,7 @@ namespace RyaUploaderV2.Models
         {
             var protobuf = _fileReader.ReadProtobuf(_filePaths.MatchListPath);
             var matches = _protobufConverter.ProtobufToMatches(protobuf)
-                .Where(match => _matches.All(x => match.MatchId != x.MatchId))
+                .Where(match => Matches.All(x => match.MatchId != x.MatchId))
                 .ToList();
 
             if (matches.Count == 0)
@@ -131,9 +132,9 @@ namespace RyaUploaderV2.Models
 
             CurrentState = await _uploader.UploadShareCodes(shareCodes) ? "All matches have been uploaded" : "Could not get any sharecode from the last 8 demos.";
 
-            _matches.UnionWith(matches);
+            Matches.AddRange(matches);
 
-            _fileWriter.SaveMatchesToJson(_filePaths.JsonMatchesPath, _matches);
+            _fileWriter.SaveMatchesToJson(_filePaths.JsonMatchesPath, Matches);
         }
 
         public void Dispose()

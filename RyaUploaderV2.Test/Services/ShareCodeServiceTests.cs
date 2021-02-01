@@ -1,17 +1,18 @@
 ﻿using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Linq;
+using NUnit.Framework;
 using RyaUploaderV2.Models;
 using RyaUploaderV2.Services;
 
 namespace RyaUploaderV2.Test.Services
 {
-    [TestClass]
+    [TestFixture]
     public class ShareCodeServiceTests
     {
         /// <summary>
         /// Test method intended to check if the ShareCodeConverter is able to convert a MatchModel into a ShareCode.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void GetNewestDemoUrls_CanProperlyConvertMatchToShareCode()
         {
             var mockProtobuf = new List<MatchModel>

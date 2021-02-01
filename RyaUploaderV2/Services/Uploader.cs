@@ -19,12 +19,18 @@ namespace RyaUploaderV2.Services
 
     public class Uploader : IUploader
     {
-        private static readonly HttpClient Client = new HttpClient();
+        private readonly HttpClient _client;
         
+        public Uploader(HttpClient client)
+        {
+            _client = client;
+        }
+
+
         public async Task<bool> UploadShareCodes(IEnumerable<string> shareCodes)
         {
             if (shareCodes == null) return false;
-            
+
             await Task.WhenAll(shareCodes.Select(UploadAsync)).ConfigureAwait(false);
 
             return true;
@@ -42,7 +48,7 @@ namespace RyaUploaderV2.Services
 
                 var form = new MultipartFormDataContent { { new StringContent(shareCode), "sharecode" } };
 
-                var response = await Client.PostAsync("https://csgostats.gg/match/upload", form);
+                var response = await _client.PostAsync("https://csgostats.gg/match/upload", form);
 
                 response.EnsureSuccessStatusCode();
 

@@ -123,9 +123,11 @@
     </Compile>
     <Compile Include="Extensions\WindowExtensions.cs" />
     <Compile Include="Models\MatchModel.cs" />
+    <Compile Include="Models\PlayerModel.cs" />
     <Compile Include="ProtoBuffs\CsgoMatchlist.cs" />
     <Compile Include="Services\FileServices\FileWriter.cs" />
     <Compile Include="Services\ProtobufServices\ProtobufConverter.cs" />
+    <Compile Include="Services\SteamServices\SteamApi.cs" />
     <Compile Include="ViewModels\TitleBarViewModel.cs" />
     <Compile Include="ViewModels\TrayIconViewModel.cs" />
   </ItemGroup>
