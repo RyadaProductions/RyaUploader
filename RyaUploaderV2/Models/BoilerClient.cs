@@ -14,6 +14,10 @@ namespace RyaUploaderV2.Models
     public class BoilerClient : PropertyChangedBase, IDisposable
     {
         private string _currentState = "Started";
+
+        /// <summary>
+        /// Represents the current state of the uploading process
+        /// </summary>
         public string CurrentState
         {
             get => _currentState; 
