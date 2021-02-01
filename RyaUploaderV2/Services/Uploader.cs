@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Serilog;
 
 namespace RyaUploaderV2.Services
 {
@@ -26,7 +27,7 @@ namespace RyaUploaderV2.Services
         {
             if (shareCodes == null) return false;
             
-            await Task.WhenAll(shareCodes.Select(async shareCode => await TryUploadAsync(shareCode)));
+            await Task.WhenAll(shareCodes.Select(UploadAsync)).ConfigureAwait(false);
 
             return true;
         }
@@ -35,7 +36,7 @@ namespace RyaUploaderV2.Services
         /// Try to upload a specific match to csgostats.gg
         /// </summary>
         /// <param name="shareCode"></param>
-        private async Task TryUploadAsync(string shareCode)
+        private async Task UploadAsync(string shareCode)
         {
             try
             {
@@ -47,12 +48,11 @@ namespace RyaUploaderV2.Services
 
                 response.EnsureSuccessStatusCode();
 
-                Debug.WriteLine($"Uploaded: {shareCode}");
+                Log.Information($"Uploaded: {shareCode}.");
             }
-            catch (Exception e)
+            catch (Exception exception)
             {
-                Debug.WriteLine($"Could not upload: {shareCode}");
-                Debug.WriteLine(e);
+                Log.Error(exception, $"Could not upload: {shareCode}.");
             }
         }
 

@@ -2,6 +2,7 @@
 using System.IO;
 using Newtonsoft.Json;
 using RyaUploaderV2.Models;
+using Serilog;
 
 namespace RyaUploaderV2.Services.FileServices
 {
@@ -19,6 +20,7 @@ namespace RyaUploaderV2.Services.FileServices
     {
         public void SaveMatchesToJson(string file, IEnumerable<MatchModel> matches)
         {
+            Log.Information($"Writing matches to file: {file}.");
             using (var stream = File.CreateText(file))
             {
                 var serializer = new JsonSerializer();

@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using RyaUploaderV2.Extensions;
 using RyaUploaderV2.Services.FileServices;
+using Serilog;
 
 namespace RyaUploaderV2.Services
 {
@@ -27,6 +28,7 @@ namespace RyaUploaderV2.Services
 
         public async Task<int> StartBoilerAsync(CancellationToken cancellationToken)
         {
+            Log.Information("Starting boiler.exe to download the latest protobuf.");
             cancellationToken.ThrowIfCancellationRequested();
 
             var boiler = new Process
@@ -41,6 +43,8 @@ namespace RyaUploaderV2.Services
             };
             boiler.Start();
             await boiler.WaitForExitAsync(cancellationToken);
+            
+            Log.Information($"Boiler closed down with exitcode: {boiler.ExitCode}.");
 
             return boiler.ExitCode;
         }

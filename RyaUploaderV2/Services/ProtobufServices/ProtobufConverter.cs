@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using RyaUploaderV2.Models;
+using Serilog;
 using Protobuf = RyaUploaderV2.ProtoBufs.CMsgGCCStrike15_v2_MatchList;
 
 namespace RyaUploaderV2.Services.ProtobufServices
@@ -19,6 +20,7 @@ namespace RyaUploaderV2.Services.ProtobufServices
     {
         public IEnumerable<MatchModel> ProtobufToMatches(Protobuf protobuf)
         {
+            Log.Information("Converting a protobuf message into a list of MatchModels.");
             var matchModels = new List<MatchModel>();
 
             foreach (var match in protobuf.Matches)

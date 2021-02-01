@@ -2,6 +2,7 @@
 using System.IO;
 using Newtonsoft.Json;
 using RyaUploaderV2.Models;
+using Serilog;
 using MatchList = RyaUploaderV2.ProtoBufs.CMsgGCCStrike15_v2_MatchList;
 
 namespace RyaUploaderV2.Services.FileServices
@@ -20,6 +21,7 @@ namespace RyaUploaderV2.Services.FileServices
     {
         public MatchList ReadProtobuf(string file)
         {
+            Log.Information("Reading protobuf file.");
             using (var stream = File.OpenRead(file))
             {
                 return MatchList.Parser.ParseFrom(stream);
@@ -33,6 +35,7 @@ namespace RyaUploaderV2.Services.FileServices
         /// <returns>List of MatchModels</returns>
         public List<MatchModel> ReadMatchesFromJson(string file)
         {
+            Log.Information("Reading json file that contains a list of MatchModel.");
             var content = File.ReadAllText(file);
             return JsonConvert.DeserializeObject<List<MatchModel>>(content);
         }

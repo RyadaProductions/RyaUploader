@@ -34,8 +34,14 @@ namespace RyaUploaderV2.Models
 
         private readonly HashSet<MatchModel> _matches = new HashSet<MatchModel>();
 
-        public BoilerClient(IUploader uploader, IBoilerProcess boilerProcess, IFileReader fileReader, IFileWriter fileWriter, 
-            IFilePaths filePaths, IShareCodeConverter shareCodeConverter, IProtobufConverter protobufConverter)
+        public BoilerClient(
+            IUploader uploader, 
+            IBoilerProcess boilerProcess, 
+            IFileReader fileReader, 
+            IFileWriter fileWriter, 
+            IFilePaths filePaths, 
+            IShareCodeConverter shareCodeConverter, 
+            IProtobufConverter protobufConverter)
         {
             _uploader = uploader;
             _boilerProcess = boilerProcess;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using RyaUploaderV2.Models;
+using Serilog;
 
 namespace RyaUploaderV2.Services
 {
@@ -11,20 +12,21 @@ namespace RyaUploaderV2.Services
         /// <summary>
         /// Get the last 8 sharecodes from the list of matches
         /// </summary>
-        /// <param name="matchList">List of matches you want to get the sharecodes from</param>
+        /// <param name="matches">List of matches you want to get the sharecodes from</param>
         /// <returns>List of the last 8 sharecodes</returns>
-        IEnumerable<string> ConvertMatchListToShareCodes(IEnumerable<MatchModel> matchList);
+        IEnumerable<string> ConvertMatchListToShareCodes(IEnumerable<MatchModel> matches);
     }
 
     public class ShareCodeConverter : IShareCodeConverter
     {
         private const string _dictionary = "ABCDEFGHJKLMNOPQRSTUVWXYZabcdefhijkmnopqrstuvwxyz23456789";
 
-        public IEnumerable<string> ConvertMatchListToShareCodes(IEnumerable<MatchModel> matchList)
+        public IEnumerable<string> ConvertMatchListToShareCodes(IEnumerable<MatchModel> matches)
         {
+            Log.Information("Converting a list of MatchModels into a list of ShareCodes.");
             var shareCodes = new List<string>();
 
-            foreach (var matchInfo in matchList)
+            foreach (var matchInfo in matches)
             {
                 var matchId = matchInfo.MatchId;
                 var tvPort = matchInfo.TvPort;
@@ -49,6 +51,7 @@ namespace RyaUploaderV2.Services
         /// <returns>True when succesfull, False when failed</returns>
         private bool TryParse(ulong matchId, ulong reservationId, uint tvPort, out string shareCode)
         {
+            Log.Information($"Converting a match into a sharecode. matchId: {matchId}, reservationId: {reservationId}, tvPort {tvPort}.");
             try
             {
                 var matchIdBytes = BitConverter.GetBytes(matchId);
@@ -76,11 +79,14 @@ namespace RyaUploaderV2.Services
                 }
                 shareCode =
                     $"CSGO-{decryptedCode.Substring(0, 5)}-{decryptedCode.Substring(5, 5)}-{decryptedCode.Substring(10, 5)}-{decryptedCode.Substring(15, 5)}-{decryptedCode.Substring(20, 5)}";
+
+                Log.Information($"Succesfully managed to convert a match into a sharecode, returning: {shareCode}.");
                 return true;
             }
-            catch
+            catch (Exception exception)
             {
                 shareCode = "";
+                Log.Error(exception, "Could not convert match into sharecode.");
                 return false;
             }
         }

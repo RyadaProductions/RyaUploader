@@ -33,7 +33,7 @@ namespace RyaUploaderV2.Services.FileServices
         /// Gets the save folder located in Appdata. If it does not exist it will also be created
         /// </summary>
         /// <returns>Path to the cache</returns>
-        private string GetAppDataPath()
+        public static string GetAppDataPath()
         {
             var windowsAppDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             var appDataFolder = Path.Combine(windowsAppDataFolder, "Ryada", "RyaUploader");
