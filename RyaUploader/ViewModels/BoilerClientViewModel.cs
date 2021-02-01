@@ -2,15 +2,16 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using RyaUploader.Core.Models;
 using RyaUploader.Core.Services;
 using RyaUploader.Core.Services.Converters;
 using RyaUploader.Core.Services.FileServices;
 using Serilog;
 using Stylet;
 
-namespace RyaUploader.Core.Models
+namespace RyaUploader.ViewModels
 {
-    public class BoilerClient : PropertyChangedBase, IDisposable
+    public class BoilerClientViewModel : PropertyChangedBase, IDisposable
     {
         private string _currentState = "Started";
 
@@ -37,7 +38,7 @@ namespace RyaUploader.Core.Models
 
         private readonly Timer _refreshTimer;
 
-        public BoilerClient(
+        public BoilerClientViewModel(
             IUploader uploader, 
             IBoilerProcess boilerProcess, 
             IFileReader fileReader, 

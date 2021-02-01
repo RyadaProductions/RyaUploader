@@ -1,13 +1,12 @@
-﻿using RyaUploader.Core.Models;
-using Stylet;
+﻿using Stylet;
 
 namespace RyaUploader.ViewModels
 {
     public class MainViewModel : Screen
     {
-        public BoilerClient Client { get; set; }
+        public BoilerClientViewModel Client { get; set; }
 
-        public MainViewModel(BoilerClient client)
+        public MainViewModel(BoilerClientViewModel client)
         {
             Client = client;
         }
