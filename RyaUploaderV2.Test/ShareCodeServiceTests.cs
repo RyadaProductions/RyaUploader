@@ -15,12 +15,7 @@ namespace RyaUploaderV2.Test
         [TestMethod]
         public void MatchlistContainsAtLeastOneValue()
         {
-            var windowsAppDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            var appDataFolder = Path.Combine(windowsAppDataFolder, "Ryada", "RyaUploader");
-
-            Directory.CreateDirectory(appDataFolder);
-
-            using (var stream = File.OpenRead(Path.Combine(appDataFolder, "matches.dat")))
+            using (var stream = File.OpenRead(Path.Combine(Environment.CurrentDirectory, "Resources", "matches.dat")))
             {
                 var protobufList = CMsgGCCStrike15_v2_MatchList.Parser.ParseFrom(stream);
                 
