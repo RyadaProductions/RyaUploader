@@ -14,7 +14,7 @@ namespace RyaUploaderV2.Services.SteamServices
 {
     public interface ISteamApi
     {
-        Task<PlayerModel> GetPlayerProfileAsync(string id);
+        Task<Dictionary<long, PlayerProfile>> GetPlayerProfilesAsync(long[] ids);
     }
 
     public class SteamApi : ISteamApi
@@ -28,20 +28,25 @@ namespace RyaUploaderV2.Services.SteamServices
             _client = client;
         }
 
-        public async Task<PlayerModel> GetPlayerProfileAsync(string id)
+        public async Task<Dictionary<long, PlayerProfile>> GetPlayerProfilesAsync(long[] ids)
         {
-            Log.Information($"Getting the steamProfile for {id}");
+            Log.Information($"Getting the steamProfiles for {ids}");
+
 
             var response = await _client.GetStringAsync(
-                $"http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key={KEY}&steamids={id}");
-
+                $"http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key={KEY}&steamids={string.Join(",", ids)}");
             var apiresponse = JObject.Parse(response);
 
-            var playerProfile = apiresponse["response"]["players"].Children().FirstOrDefault();
+            var playerProfiles = apiresponse["response"]["players"].Children().Values<PlayerProfile>().ToArray();
 
-            var player = playerProfile?.ToObject<PlayerModel>();
+            var result = new Dictionary<long, PlayerProfile>();
 
-            return player;
+            for (var i = 0; i < 10; i++)
+            {
+                result.Add(playerProfiles[i].SteamId, playerProfiles[i]);
+            }
+
+            return result;
         }
     }
 }

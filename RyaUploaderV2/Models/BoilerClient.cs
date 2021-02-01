@@ -5,8 +5,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using RyaUploaderV2.Properties;
 using RyaUploaderV2.Services;
+using RyaUploaderV2.Services.Converters;
 using RyaUploaderV2.Services.FileServices;
-using RyaUploaderV2.Services.ProtobufServices;
 using Serilog;
 using Stylet;
 
@@ -25,7 +25,7 @@ namespace RyaUploaderV2.Models
             set => SetAndNotify(ref _currentState, value);
         }
 
-        public BindableCollection<MatchModel> Matches { get; set; }
+        public BindableCollection<Match> Matches { get; set; }
 
         private readonly CancellationTokenSource _cts = new CancellationTokenSource();
         
@@ -56,7 +56,7 @@ namespace RyaUploaderV2.Models
             _shareCodeConverter = shareCodeConverter;
             _protobufConverter = protobufConverter;
 
-            Matches = new BindableCollection<MatchModel>(_fileReader.ReadMatchesFromJson(_filePaths.JsonMatchesPath));
+            Matches = new BindableCollection<Match>(_fileReader.ReadMatchesFromJson(_filePaths.JsonMatchesPath));
 
             _refreshTimer = new Timer(async e => { await RefreshProtobufAsync(); }, null, 0, 60000);
         }
@@ -116,22 +116,23 @@ namespace RyaUploaderV2.Models
         private async Task HandleProtobuf()
         {
             var protobuf = _fileReader.ReadProtobuf(_filePaths.MatchListPath);
-            var matches = _protobufConverter.ProtobufToMatches(protobuf)
-                .Where(match => Matches.All(x => match.MatchId != x.MatchId))
-                .ToList();
 
-            if (matches.Count == 0)
+            var newMatches = protobuf.Matches.Where(match => Matches.All(x => match.Matchid != x.MatchId)).ToList();
+            
+            if (newMatches.Count == 0)
             {
                 Log.Information("The protobuf did not contain new matches.");
                 CurrentState = Resources.DialogNoNewerDemo;
                 return;
             }
 
-            var shareCodes = _shareCodeConverter.ConvertMatchListToShareCodes(matches);
+            var models = await _protobufConverter.ProtobufToMatches(newMatches);
+               
+            var shareCodes = _shareCodeConverter.ConvertMatchListToShareCodes(models);
 
             CurrentState = await _uploader.UploadShareCodes(shareCodes) ? "All matches have been uploaded" : "Could not get any sharecode from the last 8 demos.";
 
-            Matches.AddRange(matches);
+            Matches.AddRange(models);
 
             _fileWriter.SaveMatchesToJson(_filePaths.JsonMatchesPath, Matches);
         }

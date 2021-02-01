@@ -2,7 +2,7 @@
 using System.Linq;
 using NUnit.Framework;
 using RyaUploaderV2.Models;
-using RyaUploaderV2.Services;
+using RyaUploaderV2.Services.Converters;
 
 namespace RyaUploaderV2.Test.Services
 {
@@ -10,14 +10,14 @@ namespace RyaUploaderV2.Test.Services
     public class ShareCodeServiceTests
     {
         /// <summary>
-        /// Test method intended to check if the ShareCodeConverter is able to convert a MatchModel into a ShareCode.
+        /// Test method intended to check if the ShareCodeConverter is able to convert a Match into a ShareCode.
         /// </summary>
         [Test]
         public void GetNewestDemoUrls_CanProperlyConvertMatchToShareCode()
         {
-            var mockProtobuf = new List<MatchModel>
+            var mockProtobuf = new List<Match>
             {
-                new MatchModel
+                new Match
                 {
                     MatchId = 3253092634687701224,
                     TvPort = 297960105,

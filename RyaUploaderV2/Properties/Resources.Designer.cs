@@ -125,7 +125,7 @@ namespace RyaUploaderV2.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to invalid arguments..
+        ///   Looks up a localized string similar to invalids arguments..
         /// </summary>
         internal static string DialogInvalidArguments {
             get {

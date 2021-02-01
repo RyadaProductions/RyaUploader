@@ -5,7 +5,7 @@ using System.Numerics;
 using RyaUploaderV2.Models;
 using Serilog;
 
-namespace RyaUploaderV2.Services
+namespace RyaUploaderV2.Services.Converters
 {
     public interface IShareCodeConverter
     {
@@ -14,14 +14,14 @@ namespace RyaUploaderV2.Services
         /// </summary>
         /// <param name="matches">List of matches you want to get the sharecodes from</param>
         /// <returns>List of the last 8 sharecodes</returns>
-        IEnumerable<string> ConvertMatchListToShareCodes(IEnumerable<MatchModel> matches);
+        IEnumerable<string> ConvertMatchListToShareCodes(IEnumerable<Match> matches);
     }
 
     public class ShareCodeConverter : IShareCodeConverter
     {
         private const string DICTIONARY = "ABCDEFGHJKLMNOPQRSTUVWXYZabcdefhijkmnopqrstuvwxyz23456789";
 
-        public IEnumerable<string> ConvertMatchListToShareCodes(IEnumerable<MatchModel> matches)
+        public IEnumerable<string> ConvertMatchListToShareCodes(IEnumerable<Match> matches)
         {
             Log.Information("Converting a list of MatchModels into a list of ShareCodes.");
             var shareCodes = new List<string>();

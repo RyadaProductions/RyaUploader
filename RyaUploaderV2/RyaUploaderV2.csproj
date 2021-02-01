@@ -123,11 +123,12 @@
     </Compile>
     <Compile Include="Extensions\WindowExtensions.cs" />
     <Compile Include="Facade\HttpClientFacade.cs" />
-    <Compile Include="Models\MatchModel.cs" />
-    <Compile Include="Models\PlayerModel.cs" />
+    <Compile Include="Models\Match.cs" />
+    <Compile Include="Models\PlayerProfile.cs" />
+    <Compile Include="Models\PlayerScore.cs" />
     <Compile Include="ProtoBuffs\CsgoMatchlist.cs" />
     <Compile Include="Services\FileServices\FileWriter.cs" />
-    <Compile Include="Services\ProtobufServices\ProtobufConverter.cs" />
+    <Compile Include="Services\Converters\ProtobufConverter.cs" />
     <Compile Include="Services\SteamServices\SteamApi.cs" />
     <Compile Include="ViewModels\TitleBarViewModel.cs" />
     <Compile Include="ViewModels\TrayIconViewModel.cs" />
@@ -138,7 +139,7 @@
     <Compile Include="Models\BoilerClient.cs" />
     <Compile Include="Services\BoilerProcess.cs" />
     <Compile Include="Services\FileServices\FileReader.cs" />
-    <Compile Include="Services\ShareCodeConverter.cs" />
+    <Compile Include="Services\Converters\ShareCodeConverter.cs" />
     <Compile Include="Services\FileServices\FilePaths.cs" />
     <Compile Include="Services\Uploader.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />

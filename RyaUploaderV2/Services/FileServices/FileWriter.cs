@@ -13,12 +13,12 @@ namespace RyaUploaderV2.Services.FileServices
         /// </summary>
         /// <param name="file">file to save the list in</param>
         /// <param name="matches">the list of matches you want to save</param>
-        void SaveMatchesToJson(string file, IEnumerable<MatchModel> matches);
+        void SaveMatchesToJson(string file, IEnumerable<Match> matches);
     }
 
     public class FileWriter : IFileWriter
     {
-        public void SaveMatchesToJson(string file, IEnumerable<MatchModel> matches)
+        public void SaveMatchesToJson(string file, IEnumerable<Match> matches)
         {
             Log.Information($"Writing matches to file: {file}.");
             using (var stream = File.CreateText(file))
