@@ -7,13 +7,13 @@ namespace RyaUploaderV2.Services
     {
         string BoilerPath { get; }
 
-        string MatchFilePath { get; }
+        string MatchListPath { get; }
     }
 
     public class PathService : IPathService
     {
         public string BoilerPath => Path.Combine(Path.GetTempPath(), "RyaUploader", "boiler.exe");
-        public string MatchFilePath => Path.Combine(GetAppDataPath(), "matches.dat");
+        public string MatchListPath => Path.Combine(GetAppDataPath(), "matches.dat");
 
         /// <summary>
         /// Gets the save folder located in Appdata. If it does not exist it will also be created

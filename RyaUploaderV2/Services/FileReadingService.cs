@@ -5,7 +5,7 @@ namespace RyaUploaderV2.Services
 {
     public interface IFileReadingService
     {
-        MatchList ReadMatches(string file);
+        MatchList ReadMatchList(string file);
     }
 
     public class FileReadingReadingService : IFileReadingService
@@ -15,7 +15,7 @@ namespace RyaUploaderV2.Services
         /// </summary>
         /// <param name="file">path to the file you want to read</param>
         /// <returns>MatchList of the last 8 matches</returns>
-        public MatchList ReadMatches(string file)
+        public MatchList ReadMatchList(string file)
         {
             using (var stream = File.OpenRead(file))
             {

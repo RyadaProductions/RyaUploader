@@ -78,7 +78,7 @@ namespace RyaUploaderV2.Models
                 case 0:
                     CurrentState = Resources.BoilerSuccess;
 
-                    var matchList = _fileReadingService.ReadMatches(_pathService.MatchFilePath);
+                    var matchList = _fileReadingService.ReadMatchList(_pathService.MatchListPath);
                     var newestSharecodes = _shareCodeService.ConvertMatchListToShareCodes(matchList);
 
                     CurrentState = await _uploadService.UploadShareCodes(newestSharecodes) ? "All matches have been uploaded" : "Could not get any sharecode from the last 8 demos.";

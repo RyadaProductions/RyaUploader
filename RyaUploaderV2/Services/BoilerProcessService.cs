@@ -33,7 +33,7 @@ namespace RyaUploaderV2.Services
                 StartInfo =
                 {
                     FileName = _pathService.BoilerPath,
-                    Arguments = $"\"{_pathService.MatchFilePath}\"",
+                    Arguments = $"\"{_pathService.MatchListPath}\"",
                     UseShellExecute = false,
                     CreateNoWindow = true
                 }
