@@ -22,6 +22,7 @@ Visual Studio 2015/2017
 * [Boiler](https://bitbucket.org/ACB/boiler/) - Used to get match history
 * [Hardcodet.NotifyIcon.Wpf](https://www.nuget.org/packages/Hardcodet.NotifyIcon.Wpf/) - TrayIcon
 * [Serilog](https://github.com/serilog/serilog) - logging framework
+* [Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json) - saving and loading of data in readable format
 
 ## Authors
 
