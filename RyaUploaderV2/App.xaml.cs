@@ -1,6 +1,4 @@
-﻿using System.Windows;
-
-namespace RyaUploaderV2
+﻿namespace RyaUploaderV2
 {
     /// <summary>
     /// Interaction logic for App.xaml

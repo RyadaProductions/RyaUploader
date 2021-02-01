@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Security.Cryptography;
 
 namespace RyaUploaderV2.Services
 {
@@ -8,31 +7,12 @@ namespace RyaUploaderV2.Services
     {
         string BoilerPath { get; }
 
-        bool IsBoilerValid { get; }
-
         string GetMatchesPath();
     }
 
     public class PathService : IPathService
     {
         public string BoilerPath => Path.Combine(Path.GetTempPath(), "RyaUploader", "boiler.exe");
-
-        public bool IsBoilerValid => GetSha1Hash(BoilerPath).Equals("80F2C8A1F51118FA450AB9E700645508172B01B8");
-
-        /// <summary>
-        /// Gets the hash in Sha1 format from a specific file. Used for validation to make sure people do not replace it with a malicious version
-        /// </summary>
-        /// <param name="filePath">The path to the file that you want to get the hash from</param>
-        /// <returns>sha1 hash</returns>
-        private string GetSha1Hash(string filePath)
-        {
-            using (var stream = File.OpenRead(filePath))
-            {
-                var sha = new SHA1Managed();
-                var hash = sha.ComputeHash(stream);
-                return BitConverter.ToString(hash).Replace("-", string.Empty);
-            }
-        }
 
         /// <summary>
         /// Gets the save folder located in Appdata. If it does not exist it will also be created
@@ -51,7 +31,7 @@ namespace RyaUploaderV2.Services
 
         public string GetMatchesPath()
         {
-            return Path.Combine(GetAppDataPath() + "matches.dat");
+            return Path.Combine(GetAppDataPath(), "matches.dat");
         }
     }
 }

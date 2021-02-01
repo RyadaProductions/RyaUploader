@@ -126,6 +126,7 @@
     <Compile Include="Extensions\ProcessExtensions.cs" />
     <Compile Include="Models\BoilerClient.cs" />
     <Compile Include="Services\BoilerProcessService.cs" />
+    <Compile Include="Services\FileService.cs" />
     <Compile Include="Services\ShareCodeService.cs" />
     <Compile Include="Services\PathService.cs" />
     <Compile Include="Services\UploadService.cs" />

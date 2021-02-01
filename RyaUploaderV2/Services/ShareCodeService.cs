@@ -13,11 +13,7 @@ namespace RyaUploaderV2.Services
 
     public class ShareCodeService : IShareCodeService
     {
-        private readonly char[] _dictionary = {
-            'A','B','D','E','F','G','H','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
-            'a','b','c','d','e','f','h','i','j','k','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
-            '2','3','4','5','6','7','8','9'
-        };
+        private string _dictionary = "ABCDEFGHJKLMNOPQRSTUVWXYZabcdefhijkmnopqrstuvwxyz23456789";
 
         private readonly string _matchesFile;
 
@@ -32,24 +28,24 @@ namespace RyaUploaderV2.Services
         /// <summary>
         /// Get the sharecodes for the last 8 matches
         /// </summary>
-        /// <returns>List of the last 8 shortcodes</returns>
+        /// <returns>List of the last 8 sharecodes</returns>
         public List<string> GetNewestDemoUrls()
         {
             var demoUrlList = new List<string>();
-            
-                var matchList = _fileService.ReadMatches(_matchesFile);
 
-                Parallel.ForEach(matchList.matches, (matchInfo, state) =>
-                {
-                    var matchId = matchInfo.matchid;
-                    var tvPort = matchInfo.watchablematchinfo.tv_port;
+            var matchList = _fileService.ReadMatches(_matchesFile);
 
-                    // Gets the legacy reservationId if it exists otherwise it will take the last reservationId of the match.
-                    var reservationId = matchInfo.roundstats_legacy?.reservationid ?? matchInfo.roundstatsall.Last().reservationid;
+            Parallel.ForEach(matchList.matches, (matchInfo, state) =>
+            {
+                var matchId = matchInfo.matchid;
+                var tvPort = matchInfo.watchablematchinfo.tv_port;
 
-                    if (TryEncode(matchId, reservationId, tvPort, out var shareCode))
-                        demoUrlList.Add($@"steam://rungame/730/XXXXXXXXXXXXXXXXX/+csgo_download_match%{shareCode}");
-                });
+                // Gets the legacy reservationId if it exists otherwise it will take the last reservationId of the match.
+                var reservationId = matchInfo.roundstats_legacy?.reservationid ?? matchInfo.roundstatsall.Last().reservationid;
+
+                if (TryParse(matchId, reservationId, tvPort, out var shareCode))
+                    demoUrlList.Add(shareCode);
+            });
 
             return demoUrlList;
         }
@@ -62,7 +58,7 @@ namespace RyaUploaderV2.Services
         /// <param name="tvPort">the port that goTV was run under</param>
         /// <param name="shareLink">Returns the sharelink that was created by the method</param>
         /// <returns>True when succesfull, False when failed</returns>
-        private bool TryEncode(ulong matchId, ulong reservationId, uint tvPort, out string shareLink)
+        private bool TryParse(ulong matchId, ulong reservationId, uint tvPort, out string shareLink)
         {
             try
             {
@@ -79,14 +75,15 @@ namespace RyaUploaderV2.Services
                 Buffer.BlockCopy(tvBytes, 0, bytes, 1 + matchIdBytes.Length + reservationBytes.Length, tvBytes.Length);
 
                 var big = new BigInteger(bytes.Reverse().ToArray());
-                
+
+                var charArray = _dictionary.ToCharArray();
                 var shareCode = "";
 
                 for (var i = 0; i < 25; i++)
                 {
-                    BigInteger.DivRem(big, _dictionary.Length, out var remainder);
-                    shareCode += _dictionary[(int)remainder];
-                    big = BigInteger.Divide(big, _dictionary.Length);
+                    BigInteger.DivRem(big, charArray.Length, out var remainder);
+                    shareCode += charArray[(int)remainder];
+                    big = BigInteger.Divide(big, charArray.Length);
                 }
                 shareLink =
                     $"CSGO-{shareCode.Substring(0, 5)}-{shareCode.Substring(5, 5)}-{shareCode.Substring(10, 5)}-{shareCode.Substring(15, 5)}-{shareCode.Substring(20, 5)}";

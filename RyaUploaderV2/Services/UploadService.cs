@@ -31,7 +31,7 @@ namespace RyaUploaderV2.Services
         /// <returns>status message</returns>
         public string UploadMatches()
         {
-            var newestSharecodes = _shareCodeService.GetNewestShareCodes();
+            var newestSharecodes = _shareCodeService.GetNewestDemoUrls();
 
             if (newestSharecodes == null) return "Could not get any sharecode from the last 8 demos.";
 
