@@ -4,7 +4,7 @@ using RyaUploader.Core.Models;
 using RyaUploader.Core.Services.Converters;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace RyaUploader.Test.Services
+namespace RyaUploader.Core.Tests.Services
 {
     [TestClass]
     public class ShareCodeServiceTests

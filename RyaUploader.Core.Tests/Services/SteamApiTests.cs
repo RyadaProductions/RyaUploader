@@ -4,7 +4,7 @@ using RyaUploader.Core.Facade;
 using RyaUploader.Core.Services.SteamServices;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace RyaUploader.Test.Services
+namespace RyaUploader.Core.Tests.Services
 {
     [TestClass]
     public class SteamApiTests

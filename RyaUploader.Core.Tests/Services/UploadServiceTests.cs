@@ -7,7 +7,7 @@ using RyaUploader.Core.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
-namespace RyaUploader.Test.Services
+namespace RyaUploader.Core.Tests.Services
 {
     [TestClass]
     public class UploadServiceTests
