@@ -71,7 +71,7 @@ namespace RyaUploaderV2.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to succesfully pulled recent matches from CSGO, starting the upload process..
+        ///   Looks up a localized string similar to succesfully pulled recent matcheses from CSGO, starting the upload process..
         /// </summary>
         internal static string BoilerSuccess {
             get {
@@ -116,7 +116,7 @@ namespace RyaUploaderV2.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to error occured while retrieving match data..
+        ///   Looks up a localized string similar to error occured while retrieving matches data..
         /// </summary>
         internal static string DialogErrorWhileRetrievingMatchesData {
             get {

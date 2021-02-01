@@ -2,28 +2,29 @@
 using System.Threading;
 using System.Threading.Tasks;
 using RyaUploaderV2.Extensions;
+using RyaUploaderV2.Services.FileServices;
 
 namespace RyaUploaderV2.Services
 {
-    public interface IBoilerProcessService
+    public interface IBoilerProcess
     {
-        Task<int> StartBoilerAsync(CancellationToken cancellationToken);
-    }
-
-    public class BoilerProcessService : IBoilerProcessService
-    {
-        private readonly IPathService _pathService;
-
-        public BoilerProcessService(IPathService pathService)
-        {
-            _pathService = pathService;
-        }
-
         /// <summary>
         /// Start the process to get the latest matches
         /// </summary>
         /// <param name="cancellationToken"></param>
         /// <returns>the exit code from boiler</returns>
+        Task<int> StartBoilerAsync(CancellationToken cancellationToken);
+    }
+
+    public class BoilerProcess : IBoilerProcess
+    {
+        private readonly IFilePaths _filePaths;
+
+        public BoilerProcess(IFilePaths filePaths)
+        {
+            _filePaths = filePaths;
+        }
+
         public async Task<int> StartBoilerAsync(CancellationToken cancellationToken)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -32,8 +33,8 @@ namespace RyaUploaderV2.Services
             {
                 StartInfo =
                 {
-                    FileName = _pathService.BoilerPath,
-                    Arguments = $"\"{_pathService.MatchListPath}\"",
+                    FileName = _filePaths.BoilerPath,
+                    Arguments = $"\"{_filePaths.MatchListPath}\"",
                     UseShellExecute = false,
                     CreateNoWindow = true
                 }

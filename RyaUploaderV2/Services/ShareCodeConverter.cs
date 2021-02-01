@@ -2,34 +2,35 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
-using RyaUploaderV2.ProtoBufs;
+using RyaUploaderV2.Models;
 
 namespace RyaUploaderV2.Services
 {
-    public interface IShareCodeService
+    public interface IShareCodeConverter
     {
-        List<string> ConvertMatchListToShareCodes(CMsgGCCStrike15_v2_MatchList matchList);
+        /// <summary>
+        /// Get the last 8 sharecodes from the list of matches
+        /// </summary>
+        /// <param name="matchList">List of matches you want to get the sharecodes from</param>
+        /// <returns>List of the last 8 sharecodes</returns>
+        IEnumerable<string> ConvertMatchListToShareCodes(IEnumerable<MatchModel> matchList);
     }
 
-    public class ShareCodeService : IShareCodeService
+    public class ShareCodeConverter : IShareCodeConverter
     {
         private const string _dictionary = "ABCDEFGHJKLMNOPQRSTUVWXYZabcdefhijkmnopqrstuvwxyz23456789";
 
-        /// <summary>
-        /// Get the sharecodes for the last 8 matches
-        /// </summary>
-        /// <returns>List of the last 8 sharecodes</returns>
-        public List<string> ConvertMatchListToShareCodes(CMsgGCCStrike15_v2_MatchList matchList)
+        public IEnumerable<string> ConvertMatchListToShareCodes(IEnumerable<MatchModel> matchList)
         {
             var demoUrlList = new List<string>();
 
-            foreach (var matchInfo in matchList.Matches)
+            foreach (var matchInfo in matchList)
             {
-                var matchId = matchInfo.Matchid;
-                var tvPort = matchInfo.Watchablematchinfo.TvPort;
+                var matchId = matchInfo.MatchId;
+                var tvPort = matchInfo.TvPort;
 
-                // Gets the legacy reservationId if it exists otherwise it will take the last reservationId of the match.
-                var reservationId = matchInfo.RoundstatsLegacy?.Reservationid ?? matchInfo.Roundstatsall.Last().Reservationid;
+                // Gets the legacy ReservationId if it exists otherwise it will take the last ReservationId of the match.
+                var reservationId = matchInfo.ReservationId;
 
                 if (TryParse(matchId, reservationId, tvPort, out var shareCode))
                     demoUrlList.Add(shareCode);

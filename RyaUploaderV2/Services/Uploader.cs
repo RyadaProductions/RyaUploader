@@ -8,22 +8,21 @@ using System.Threading.Tasks;
 
 namespace RyaUploaderV2.Services
 {
-    public interface IUploadService
+    public interface IUploader
     {
-        Task<bool> UploadShareCodes(List<string> shareCodes);
+        /// <summary>
+        /// Uploads the last 8 matches to an online endpoint
+        /// </summary>
+        /// <param name="shareCodes">List of sharecodes you want to upload</param>
+        /// <returns>status message</returns>
+        Task<bool> UploadShareCodes(IEnumerable<string> shareCodes);
     }
 
-    public class UploadService : IUploadService
+    public class Uploader : IUploader
     {
         private static readonly HttpClient Client = new HttpClient();
         
-        private readonly ConcurrentBag<string> _lastMatches = new ConcurrentBag<string>();
-        
-        /// <summary>
-        /// Uploads the last 8 matches to csgostats.gg
-        /// </summary>
-        /// <returns>status message</returns>
-        public async Task<bool> UploadShareCodes(List<string> shareCodes)
+        public async Task<bool> UploadShareCodes(IEnumerable<string> shareCodes)
         {
             if (shareCodes == null) return false;
             
@@ -40,9 +39,7 @@ namespace RyaUploaderV2.Services
         {
             try
             {
-                if (string.IsNullOrEmpty(shareCode) || _lastMatches.Contains(shareCode)) return;
-
-                _lastMatches.Add(shareCode);
+                if (string.IsNullOrEmpty(shareCode)) return;
 
                 var form = new MultipartFormDataContent { { new StringContent(shareCode), "sharecode" } };
 

@@ -1,57 +1,30 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RyaUploaderV2.ProtoBufs;
+﻿using System.Collections.Generic;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using RyaUploaderV2.Models;
 using RyaUploaderV2.Services;
-using Protobuf = RyaUploaderV2.ProtoBufs.CMsgGCCStrike15_v2_MatchList;
-using MatchInfo = RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_MatchInfo;
-using RoundStats = RyaUploaderV2.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingServerRoundStats;
 
 namespace RyaUploaderV2.Test.Services
 {
     [TestClass]
     public class ShareCodeServiceTests
     {
+        /// <summary>
+        /// Test method intended to check if the ShareCodeConverter is able to convert a MatchModel into a ShareCode.
+        /// </summary>
         [TestMethod]
-        public void GetNewestDemoUrls_CanProperlyConvertLegacyMatchToShareCode()
+        public void GetNewestDemoUrls_CanProperlyConvertMatchToShareCode()
         {
-            var mockProtobuf = new Protobuf
+            var mockProtobuf = new List<MatchModel>
             {
-                Matches =
+                new MatchModel
                 {
-                    new MatchInfo
-                    {
-                        Matchid = 3253092634687701224,
-                        Watchablematchinfo = new WatchableMatchInfo { TvPort = 297960105 },
-                        RoundstatsLegacy = new RoundStats { Reservationid = 3253095767866343686 }
-                    }
+                    MatchId = 3253092634687701224,
+                    TvPort = 297960105,
+                    ReservationId = 3253095767866343686
                 }
             };
 
-            var test = new ShareCodeService();
-            var matchlist = test.ConvertMatchListToShareCodes(mockProtobuf);
-
-            Assert.AreEqual(true, matchlist.Contains("CSGO-3V2i2-d2zCP-3bFns-RKunm-WNmkP"));
-        }
-
-        [TestMethod]
-        public void GetNewestDemoUrls_CanProperlyConvertNewMatchToShareCode()
-        {
-            var mockProtobuf = new Protobuf
-            {
-                Matches =
-                {
-                    new MatchInfo
-                    {
-                        Matchid = 3253092634687701224,
-                        Watchablematchinfo = new WatchableMatchInfo { TvPort = 297960105 },
-                        Roundstatsall =
-                        {
-                            new RoundStats { Reservationid = 3253095767866343686 }
-                        }
-                    }
-                }
-            };
-
-            var test = new ShareCodeService();
+            var test = new ShareCodeConverter();
             var matchlist = test.ConvertMatchListToShareCodes(mockProtobuf);
 
             Assert.AreEqual(true, matchlist.Contains("CSGO-3V2i2-d2zCP-3bFns-RKunm-WNmkP"));

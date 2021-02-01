@@ -1,19 +1,33 @@
 ﻿using System;
 using System.IO;
 
-namespace RyaUploaderV2.Services
+namespace RyaUploaderV2.Services.FileServices
 {
-    public interface IPathService
+    public interface IFilePaths
     {
+        /// <summary>
+        /// string that contains the path to boiler.exe
+        /// </summary>
         string BoilerPath { get; }
 
+        /// <summary>
+        /// string that contains the path to matches.dat
+        /// </summary>
         string MatchListPath { get; }
+
+        /// <summary>
+        /// string that contains the path to matches.json
+        /// </summary>
+        string JsonMatchesPath { get; }
     }
 
-    public class PathService : IPathService
+    public class FilePaths : IFilePaths
     {
         public string BoilerPath => Path.Combine(Path.GetTempPath(), "RyaUploader", "boiler.exe");
+
         public string MatchListPath => Path.Combine(GetAppDataPath(), "matches.dat");
+
+        public string JsonMatchesPath => Path.Combine(GetAppDataPath(), "matches.json");
 
         /// <summary>
         /// Gets the save folder located in Appdata. If it does not exist it will also be created

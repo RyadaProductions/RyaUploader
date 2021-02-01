@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using RyaUploaderV2.Properties;
 using RyaUploaderV2.Services;
+using RyaUploaderV2.Services.FileServices;
+using RyaUploaderV2.Services.ProtobufServices;
 using Stylet;
 
 namespace RyaUploaderV2.Models
@@ -18,28 +22,40 @@ namespace RyaUploaderV2.Models
 
         private readonly CancellationTokenSource _cts = new CancellationTokenSource();
         
-        private readonly IUploadService _uploadService;
-        private readonly IBoilerProcessService _boilerProcessService;
-        private readonly IFileReadingService _fileReadingService;
-        private readonly IPathService _pathService;
-        private readonly IShareCodeService _shareCodeService;
+        private readonly IUploader _uploader;
+        private readonly IBoilerProcess _boilerProcess;
+        private readonly IFileReader _fileReader;
+        private readonly IFileWriter _fileWriter;
+        private readonly IFilePaths _filePaths;
+        private readonly IShareCodeConverter _shareCodeConverter;
+        private readonly IProtobufConverter _protobufConverter;
 
         private readonly Timer _refreshTimer;
 
-        public BoilerClient(IUploadService uploadService, IBoilerProcessService boilerProcessService, IFileReadingService fileReadingService, IPathService pathService, IShareCodeService shareCodeService)
-        {
-            _uploadService = uploadService;
-            _boilerProcessService = boilerProcessService;
-            _fileReadingService = fileReadingService;
-            _pathService = pathService;
-            _shareCodeService = shareCodeService;
+        private readonly HashSet<MatchModel> _matchList = new HashSet<MatchModel>();
 
-            _refreshTimer = new Timer(async e => { await TimerCallbackAsync(); }, null, 0, 60000);
+        public BoilerClient(IUploader uploader, IBoilerProcess boilerProcess, IFileReader fileReader, IFileWriter fileWriter, 
+            IFilePaths filePaths, IShareCodeConverter shareCodeConverter, IProtobufConverter protobufConverter)
+        {
+            _uploader = uploader;
+            _boilerProcess = boilerProcess;
+            _fileReader = fileReader;
+            _fileWriter = fileWriter;
+            _filePaths = filePaths;
+            _shareCodeConverter = shareCodeConverter;
+            _protobufConverter = protobufConverter;
+
+
+            _refreshTimer = new Timer(async e => { await RefreshProtobufAsync(); }, null, 0, 60000);
         }
 
-        private async Task TimerCallbackAsync()
+        /// <summary>
+        /// Run boiler.exe and let it download the new protobuf file.
+        /// Upload the matches that have not been uploaded previously.
+        /// </summary>
+        private async Task RefreshProtobufAsync()
         {
-            var result = await _boilerProcessService.StartBoilerAsync(_cts.Token);
+            var result = await _boilerProcess.StartBoilerAsync(_cts.Token);
             await HandleBoilerResult(result);
         }
 
@@ -78,10 +94,17 @@ namespace RyaUploaderV2.Models
                 case 0:
                     CurrentState = Resources.BoilerSuccess;
 
-                    var matchList = _fileReadingService.ReadMatchList(_pathService.MatchListPath);
-                    var newestSharecodes = _shareCodeService.ConvertMatchListToShareCodes(matchList);
+                    var protobuf = _fileReader.ReadMatchList(_filePaths.MatchListPath);
+                    var matchList = _protobufConverter.ProtobufToMatchList(protobuf);
 
-                    CurrentState = await _uploadService.UploadShareCodes(newestSharecodes) ? "All matches have been uploaded" : "Could not get any sharecode from the last 8 demos.";
+                    matchList = matchList.Where(x => !_matchList.Contains(x)).ToList();
+
+                    var newestShareCodes = _shareCodeConverter.ConvertMatchListToShareCodes(matchList);
+
+                    CurrentState = await _uploader.UploadShareCodes(newestShareCodes) ? "All matches have been uploaded" : "Could not get any sharecode from the last 8 demos.";
+                    
+                    _fileWriter.SaveMatchesToJson(_filePaths.JsonMatchesPath, matchList);
+
                     break;
                 default:
                     CurrentState = Resources.UnknownError;

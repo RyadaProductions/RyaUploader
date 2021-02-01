@@ -143,7 +143,7 @@
     <value>..\3rdParty\steam_appid.txt;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="BoilerSuccess" xml:space="preserve">
-    <value>succesfully pulled recent matches from CSGO, starting the upload process.</value>
+    <value>succesfully pulled recent matcheses from CSGO, starting the upload process.</value>
   </data>
   <data name="DialogBoilerIncorrect" xml:space="preserve">
     <value>the version of boiler.exe is incorrect</value>
@@ -158,7 +158,7 @@
     <value>error occured while retrieving demo data.</value>
   </data>
   <data name="DialogErrorWhileRetrievingMatchesData" xml:space="preserve">
-    <value>error occured while retrieving match data.</value>
+    <value>error occured while retrieving matches data.</value>
   </data>
   <data name="DialogInvalidArguments" xml:space="preserve">
     <value>invalid arguments.</value>
