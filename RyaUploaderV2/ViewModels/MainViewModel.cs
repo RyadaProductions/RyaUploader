@@ -5,13 +5,11 @@ namespace RyaUploaderV2.ViewModels
 {
     public class MainViewModel : Screen
     {
-        public string BoilerState => _client.CurrentState;
-
-        private readonly BoilerClient _client;
+        public BoilerClient Client { get; set; }
 
         public MainViewModel(BoilerClient client)
         {
-            _client = client;
+            Client = client;
         }
     }
 }

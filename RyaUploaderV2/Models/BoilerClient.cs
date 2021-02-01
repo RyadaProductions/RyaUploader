@@ -9,12 +9,18 @@ using System.Threading.Tasks;
 using RyaUploaderV2.Extensions;
 using RyaUploaderV2.Properties;
 using RyaUploaderV2.Services;
+using Stylet;
 
 namespace RyaUploaderV2.Models
 {
-    public class BoilerClient
+    public class BoilerClient : PropertyChangedBase
     {
-        public string CurrentState { get; private set; } = "Started";
+        private string _currentState = "Started";
+        public string CurrentState
+        {
+            get => _currentState; 
+            set => SetAndNotify(ref _currentState, value); 
+        }
 
         public static readonly HttpClient Client = new HttpClient();
 
@@ -25,7 +31,7 @@ namespace RyaUploaderV2.Models
         private readonly PathService _pathService;
 
         private readonly Timer _refreshTimer;
-        private readonly string _boilerPath = Path.Combine(Path.GetTempPath(), "RyaUploader", "tempfile.exe");
+        private readonly string _boilerPath = Path.Combine(Path.GetTempPath(), "RyaUploader", "boiler.exe");
 
         public BoilerClient(ShareCodeService shareCodeService, PathService pathService)
         {
@@ -34,8 +40,7 @@ namespace RyaUploaderV2.Models
 
             if (!IsBoilerValid())
             {
-                CurrentState = "Invalid Boiler version";
-                return;
+                CurrentState = HandleBoilerResult(2);
             }
 
             _refreshTimer = new Timer(async e => { await TimerCallback(); }, null, 0, 60000);
@@ -127,15 +132,15 @@ namespace RyaUploaderV2.Models
 
             if (newestSharecodes == null) return "Could not get any sharecode from the last 8 demos.";
 
-            Parallel.ForEach(newestSharecodes, async shareCode => { await Upload(shareCode); });
+            Parallel.ForEach(newestSharecodes, async shareCode => { await TryUpload(shareCode); });
             return "All matches have been uploaded";
         }
 
         /// <summary>
-        /// Upload a specific match to csgostats.gg
+        /// Try to upload a specific match to csgostats.gg
         /// </summary>
         /// <param name="shareCode"></param>
-        public async Task Upload(string shareCode)
+        public async Task TryUpload(string shareCode)
         {
             try
             {
