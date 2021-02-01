@@ -20,17 +20,17 @@ namespace RyaUploaderV2.Models
         
         private readonly IUploadService _uploadService;
         private readonly IBoilerProcessService _boilerProcessService;
-        private readonly IFileService _fileService;
+        private readonly IFileReadingService _fileReadingService;
         private readonly IPathService _pathService;
         private readonly IShareCodeService _shareCodeService;
 
         private readonly Timer _refreshTimer;
 
-        public BoilerClient(IUploadService uploadService, IBoilerProcessService boilerProcessService, IFileService fileService, IPathService pathService, IShareCodeService shareCodeService)
+        public BoilerClient(IUploadService uploadService, IBoilerProcessService boilerProcessService, IFileReadingService fileReadingService, IPathService pathService, IShareCodeService shareCodeService)
         {
             _uploadService = uploadService;
             _boilerProcessService = boilerProcessService;
-            _fileService = fileService;
+            _fileReadingService = fileReadingService;
             _pathService = pathService;
             _shareCodeService = shareCodeService;
 
@@ -78,7 +78,7 @@ namespace RyaUploaderV2.Models
                 case 0:
                     CurrentState = Resources.BoilerSuccess;
 
-                    var matchList = _fileService.ReadMatches(_pathService.MatchFilePath);
+                    var matchList = _fileReadingService.ReadMatches(_pathService.MatchFilePath);
                     var newestSharecodes = _shareCodeService.ConvertMatchListToShareCodes(matchList);
 
                     CurrentState = await _uploadService.UploadShareCodes(newestSharecodes) ? "All matches have been uploaded" : "Could not get any sharecode from the last 8 demos.";

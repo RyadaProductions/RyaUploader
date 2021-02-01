@@ -112,7 +112,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Extensions\WindowExtensions.cs" />
     <Compile Include="ProtoBuffs\CsgoMatchlist.cs" />
+    <Compile Include="ViewModels\TitleBarViewModel.cs" />
     <Compile Include="ViewModels\TrayIconViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -120,7 +122,7 @@
     <Compile Include="Extensions\ProcessExtensions.cs" />
     <Compile Include="Models\BoilerClient.cs" />
     <Compile Include="Services\BoilerProcessService.cs" />
-    <Compile Include="Services\FileService.cs" />
+    <Compile Include="Services\FileReadingService.cs" />
     <Compile Include="Services\ShareCodeService.cs" />
     <Compile Include="Services\PathService.cs" />
     <Compile Include="Services\UploadService.cs" />
@@ -161,6 +163,10 @@
     <Page Include="Views\ShellView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\TitleBarView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\TrayIconView.xaml">
       <SubType>Designer</SubType>

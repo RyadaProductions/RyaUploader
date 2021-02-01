@@ -13,12 +13,10 @@ namespace RyaUploaderV2.Services
     public class BoilerProcessService : IBoilerProcessService
     {
         private readonly IPathService _pathService;
-        private readonly IFileService _fileService;
 
-        public BoilerProcessService(IPathService pathService, IFileService fileService)
+        public BoilerProcessService(IPathService pathService)
         {
             _pathService = pathService;
-            _fileService = fileService;
         }
 
         /// <summary>
@@ -28,8 +26,6 @@ namespace RyaUploaderV2.Services
         /// <returns>the exit code from boiler</returns>
         public async Task<int> StartBoilerAsync(CancellationToken cancellationToken)
         {
-            if (!_fileService.IsBoilerValid) return 2;
-
             cancellationToken.ThrowIfCancellationRequested();
 
             var boiler = new Process

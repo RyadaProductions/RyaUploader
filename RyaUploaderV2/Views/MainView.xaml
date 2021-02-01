@@ -5,8 +5,10 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:viewModels="clr-namespace:RyaUploaderV2.ViewModels"
       mc:Ignorable="d"
-      d:DataContext="{d:DesignInstance viewModels:MainViewModel}">
-    <Grid Width="600" Height="200">
-        <TextBlock Text="{Binding Client.CurrentState}"/>
+      d:DataContext="{d:DesignInstance viewModels:MainViewModel}"
+      BorderBrush="#66000000"
+      BorderThickness="3,0,3,3">
+    <Grid>
+        <TextBlock Text="{Binding Client.CurrentState}" Foreground="White" HorizontalAlignment="Center"/>
     </Grid>
 </UserControl>
