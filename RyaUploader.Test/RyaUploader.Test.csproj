@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0-windows</TargetFramework>
@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RyaUploaderV2\RyaUploaderV2.csproj" />
+    <ProjectReference Include="..\RyaUploaderV2\RyaUploader.csproj" />
   </ItemGroup>
 
 </Project>

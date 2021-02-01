@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RyaUploaderV2", "RyaUploaderV2\RyaUploaderV2.csproj", "{279D6352-706F-4CAE-B98A-4B345A2BFE3D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RyaUploader", "RyaUploader\RyaUploader.csproj", "{279D6352-706F-4CAE-B98A-4B345A2BFE3D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RyaUploaderV2.Test", "RyaUploaderV2.Test\RyaUploaderV2.Test.csproj", "{C962BDA0-B306-4912-8CA4-74C4A40D8DA5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RyaUploader.Test", "RyaUploader.Test\RyaUploader.Test.csproj", "{C962BDA0-B306-4912-8CA4-74C4A40D8DA5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
