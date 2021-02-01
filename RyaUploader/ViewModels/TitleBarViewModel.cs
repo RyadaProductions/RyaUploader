@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using Stylet;
 
-namespace RyaUploaderV2.ViewModels
+namespace RyaUploader.ViewModels
 {
     public class TitleBarViewModel : Screen
     {

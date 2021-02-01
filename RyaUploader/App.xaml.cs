@@ -1,4 +1,4 @@
-﻿namespace RyaUploaderV2
+﻿namespace RyaUploader
 {
     /// <summary>
     /// Interaction logic for App.xaml

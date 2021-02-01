@@ -1,7 +1,7 @@
-﻿using RyaUploaderV2.Models;
+﻿using RyaUploader.Models;
 using Stylet;
 
-namespace RyaUploaderV2.ViewModels
+namespace RyaUploader.ViewModels
 {
     public class MainViewModel : Screen
     {

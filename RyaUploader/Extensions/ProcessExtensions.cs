@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace RyaUploaderV2.Extensions
+namespace RyaUploader.Extensions
 {
     public static class ProcessExtensions
     {

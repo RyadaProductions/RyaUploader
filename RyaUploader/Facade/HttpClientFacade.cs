@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RyaUploaderV2.Facade
+namespace RyaUploader.Facade
 {
     public interface IHttpClient
     {

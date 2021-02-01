@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using RyaUploaderV2.Facade;
+using RyaUploader.Facade;
 using Serilog;
 
-namespace RyaUploaderV2.Services
+namespace RyaUploader.Services
 {
     public interface IUploader
     {

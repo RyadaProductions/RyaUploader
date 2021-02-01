@@ -2,12 +2,12 @@
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using RyaUploaderV2.Facade;
-using RyaUploaderV2.Services;
+using RyaUploader.Facade;
+using RyaUploader.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
-namespace RyaUploaderV2.Test.Services
+namespace RyaUploader.Test.Services
 {
     [TestClass]
     public class UploadServiceTests

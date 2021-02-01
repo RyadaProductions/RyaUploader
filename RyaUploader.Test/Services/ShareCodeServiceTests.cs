@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using RyaUploaderV2.Models;
-using RyaUploaderV2.Services.Converters;
+using RyaUploader.Models;
+using RyaUploader.Services.Converters;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace RyaUploaderV2.Test.Services
+namespace RyaUploader.Test.Services
 {
     [TestClass]
     public class ShareCodeServiceTests

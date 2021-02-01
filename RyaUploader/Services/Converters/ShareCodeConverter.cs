@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
-using RyaUploaderV2.Models;
+using RyaUploader.Models;
 using Serilog;
 
-namespace RyaUploaderV2.Services.Converters
+namespace RyaUploader.Services.Converters
 {
     public interface IShareCodeConverter
     {

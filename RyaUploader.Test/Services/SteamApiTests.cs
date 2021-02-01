@@ -1,10 +1,10 @@
 ﻿using System.Threading.Tasks;
 using Moq;
-using RyaUploaderV2.Facade;
-using RyaUploaderV2.Services.SteamServices;
+using RyaUploader.Facade;
+using RyaUploader.Services.SteamServices;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace RyaUploaderV2.Test.Services
+namespace RyaUploader.Test.Services
 {
     [TestClass]
     public class SteamApiTests

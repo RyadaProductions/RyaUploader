@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
-using RyaUploaderV2.Models;
+using RyaUploader.Models;
 using Serilog;
-using MatchList = RyaUploaderV2.ProtoBufs.CMsgGCCStrike15_v2_MatchList;
+using MatchList = RyaUploader.ProtoBufs.CMsgGCCStrike15_v2_MatchList;
 
-namespace RyaUploaderV2.Services.FileServices
+namespace RyaUploader.Services.FileServices
 {
     public interface IFileReader
     {

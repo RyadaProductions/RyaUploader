@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RyaUploaderV2\RyaUploader.csproj" />
+    <ProjectReference Include="..\RyaUploader\RyaUploader.csproj" />
   </ItemGroup>
 
 </Project>

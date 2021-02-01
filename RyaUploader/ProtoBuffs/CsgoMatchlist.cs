@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace RyaUploaderV2.ProtoBufs
+namespace RyaUploader.ProtoBufs
 {
 
     /// <summary>Holder for reflection information generated from matchinfo.proto</summary>
@@ -127,23 +127,23 @@ namespace RyaUploaderV2.ProtoBufs
             descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
                 new pbr::FileDescriptor[] { },
                 new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-                    new pbr::GeneratedClrTypeInfo(typeof(global::RyaUploaderV2.ProtoBufs.CMsgGCCStrike15_v2_MatchList), global::RyaUploaderV2.ProtoBufs.CMsgGCCStrike15_v2_MatchList.Parser, new[]{ "Msgrequestid", "Accountid", "Servertime", "Matches", "Streams", "Tournamentinfo" }, null, null, null),
-                    new pbr::GeneratedClrTypeInfo(typeof(global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_MatchInfo), global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_MatchInfo.Parser, new[]{ "Matchid", "Matchtime", "Watchablematchinfo", "RoundstatsLegacy", "Roundstatsall" }, null, null, null),
-                    new pbr::GeneratedClrTypeInfo(typeof(global::RyaUploaderV2.ProtoBufs.WatchableMatchInfo), global::RyaUploaderV2.ProtoBufs.WatchableMatchInfo.Parser, new[]{ "ServerIp", "TvPort", "TvSpectators", "TvTime", "TvWatchPassword", "ClDecryptdataKey", "ClDecryptdataKeyPub", "GameType", "GameMapgroup", "GameMap", "ServerId", "MatchId", "ReservationId" }, null, null, null),
-                    new pbr::GeneratedClrTypeInfo(typeof(global::RyaUploaderV2.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingServerRoundStats), global::RyaUploaderV2.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingServerRoundStats.Parser, new[]{ "Reservationid", "Reservation", "Map", "Round", "Kills", "Assists", "Deaths", "Scores", "Pings", "RoundResult", "MatchResult", "TeamScores", "Confirm", "ReservationStage", "MatchDuration", "EnemyKills", "EnemyHeadshots", "Enemy3Ks", "Enemy4Ks", "Enemy5Ks", "Mvps", "SpectatorsCount", "SpectatorsCountTv", "SpectatorsCountLnk", "EnemyKillsAgg", "DropInfo" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::RyaUploaderV2.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingServerRoundStats.Types.DropInfo), global::RyaUploaderV2.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingServerRoundStats.Types.DropInfo.Parser, new[]{ "AccountMvp" }, null, null, null)}),
-                    new pbr::GeneratedClrTypeInfo(typeof(global::RyaUploaderV2.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve), global::RyaUploaderV2.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve.Parser, new[]{ "AccountIds", "GameType", "MatchId", "ServerVersion", "Rankings", "EncryptionKey", "EncryptionKeyPub", "PartyIds", "Whitelist", "TvMasterSteamid", "TournamentEvent", "TournamentTeams", "TournamentCastersAccountIds", "TvRelaySteamid", "PreMatchData" }, null, null, null),
-                    new pbr::GeneratedClrTypeInfo(typeof(global::RyaUploaderV2.ProtoBufs.PlayerRankingInfo), global::RyaUploaderV2.ProtoBufs.PlayerRankingInfo.Parser, new[]{ "AccountId", "RankId", "Wins", "RankChange" }, null, null, null),
-                    new pbr::GeneratedClrTypeInfo(typeof(global::RyaUploaderV2.ProtoBufs.IpAddressMask), global::RyaUploaderV2.ProtoBufs.IpAddressMask.Parser, new[]{ "A", "B", "C", "D", "Bits", "Token" }, null, null, null),
-                    new pbr::GeneratedClrTypeInfo(typeof(global::RyaUploaderV2.ProtoBufs.TournamentEvent), global::RyaUploaderV2.ProtoBufs.TournamentEvent.Parser, new[]{ "EventId", "EventTag", "EventName", "EventTimeStart", "EventTimeEnd", "EventPublic", "EventStageId", "EventStageName", "ActiveSectionId" }, null, null, null),
-                    new pbr::GeneratedClrTypeInfo(typeof(global::RyaUploaderV2.ProtoBufs.CPreMatchInfoData), global::RyaUploaderV2.ProtoBufs.CPreMatchInfoData.Parser, new[]{ "PredictionsPct", "Draft", "Stats" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::RyaUploaderV2.ProtoBufs.CPreMatchInfoData.Types.TeamStats), global::RyaUploaderV2.ProtoBufs.CPreMatchInfoData.Types.TeamStats.Parser, new[]{ "MatchInfoIdxtxt", "MatchInfoTxt", "MatchInfoTeams" }, null, null, null)}),
-                    new pbr::GeneratedClrTypeInfo(typeof(global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentMatchDraft), global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentMatchDraft.Parser, new[]{ "EventId", "EventStageId", "TeamId0", "TeamId1", "MapsCount", "MapsCurrent", "TeamIdStart", "TeamIdVeto1", "TeamIdPickn", "Drafts" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentMatchDraft.Types.Entry), global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentMatchDraft.Types.Entry.Parser, new[]{ "Mapid", "TeamIdCt" }, null, null, null)}),
-                    new pbr::GeneratedClrTypeInfo(typeof(global::RyaUploaderV2.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingGC2ServerConfirm), global::RyaUploaderV2.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingGC2ServerConfirm.Parser, new[]{ "Token", "Stamp", "Exchange" }, null, null, null),
-                    new pbr::GeneratedClrTypeInfo(typeof(global::RyaUploaderV2.ProtoBufs.TournamentTeam), global::RyaUploaderV2.ProtoBufs.TournamentTeam.Parser, new[]{ "TeamId", "TeamTag", "TeamFlag", "TeamName", "Players" }, null, null, null),
-                    new pbr::GeneratedClrTypeInfo(typeof(global::RyaUploaderV2.ProtoBufs.TournamentPlayer), global::RyaUploaderV2.ProtoBufs.TournamentPlayer.Parser, new[]{ "AccountId", "PlayerNick", "PlayerName", "PlayerDob", "PlayerFlag", "PlayerLocation", "PlayerDesc" }, null, null, null),
-                    new pbr::GeneratedClrTypeInfo(typeof(global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentInfo), global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentInfo.Parser, new[]{ "Sections", "TournamentEvent", "TournamentTeams" }, null, null, null),
-                    new pbr::GeneratedClrTypeInfo(typeof(global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentSection), global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentSection.Parser, new[]{ "Sectionid", "PersonaName", "Desc", "Groups" }, null, null, null),
-                    new pbr::GeneratedClrTypeInfo(typeof(global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentGroup), global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentGroup.Parser, new[]{ "Groupid", "PersonaName", "Desc", "PicksDeprecated", "Teams", "StageIds", "Picklockuntiltime", "Pickableteams", "PointsPerPick", "Picks" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentGroup.Types.Picks), global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentGroup.Types.Picks.Parser, new[]{ "Pickids" }, null, null, null)}),
-                    new pbr::GeneratedClrTypeInfo(typeof(global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentGroupTeam), global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentGroupTeam.Parser, new[]{ "TeamId", "Score", "Correctpick" }, null, null, null)
+                    new pbr::GeneratedClrTypeInfo(typeof(global::RyaUploader.ProtoBufs.CMsgGCCStrike15_v2_MatchList), global::RyaUploader.ProtoBufs.CMsgGCCStrike15_v2_MatchList.Parser, new[]{ "Msgrequestid", "Accountid", "Servertime", "Matches", "Streams", "Tournamentinfo" }, null, null, null),
+                    new pbr::GeneratedClrTypeInfo(typeof(global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_MatchInfo), global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_MatchInfo.Parser, new[]{ "Matchid", "Matchtime", "Watchablematchinfo", "RoundstatsLegacy", "Roundstatsall" }, null, null, null),
+                    new pbr::GeneratedClrTypeInfo(typeof(global::RyaUploader.ProtoBufs.WatchableMatchInfo), global::RyaUploader.ProtoBufs.WatchableMatchInfo.Parser, new[]{ "ServerIp", "TvPort", "TvSpectators", "TvTime", "TvWatchPassword", "ClDecryptdataKey", "ClDecryptdataKeyPub", "GameType", "GameMapgroup", "GameMap", "ServerId", "MatchId", "ReservationId" }, null, null, null),
+                    new pbr::GeneratedClrTypeInfo(typeof(global::RyaUploader.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingServerRoundStats), global::RyaUploader.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingServerRoundStats.Parser, new[]{ "Reservationid", "Reservation", "Map", "Round", "Kills", "Assists", "Deaths", "Scores", "Pings", "RoundResult", "MatchResult", "TeamScores", "Confirm", "ReservationStage", "MatchDuration", "EnemyKills", "EnemyHeadshots", "Enemy3Ks", "Enemy4Ks", "Enemy5Ks", "Mvps", "SpectatorsCount", "SpectatorsCountTv", "SpectatorsCountLnk", "EnemyKillsAgg", "DropInfo" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::RyaUploader.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingServerRoundStats.Types.DropInfo), global::RyaUploader.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingServerRoundStats.Types.DropInfo.Parser, new[]{ "AccountMvp" }, null, null, null)}),
+                    new pbr::GeneratedClrTypeInfo(typeof(global::RyaUploader.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve), global::RyaUploader.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve.Parser, new[]{ "AccountIds", "GameType", "MatchId", "ServerVersion", "Rankings", "EncryptionKey", "EncryptionKeyPub", "PartyIds", "Whitelist", "TvMasterSteamid", "TournamentEvent", "TournamentTeams", "TournamentCastersAccountIds", "TvRelaySteamid", "PreMatchData" }, null, null, null),
+                    new pbr::GeneratedClrTypeInfo(typeof(global::RyaUploader.ProtoBufs.PlayerRankingInfo), global::RyaUploader.ProtoBufs.PlayerRankingInfo.Parser, new[]{ "AccountId", "RankId", "Wins", "RankChange" }, null, null, null),
+                    new pbr::GeneratedClrTypeInfo(typeof(global::RyaUploader.ProtoBufs.IpAddressMask), global::RyaUploader.ProtoBufs.IpAddressMask.Parser, new[]{ "A", "B", "C", "D", "Bits", "Token" }, null, null, null),
+                    new pbr::GeneratedClrTypeInfo(typeof(global::RyaUploader.ProtoBufs.TournamentEvent), global::RyaUploader.ProtoBufs.TournamentEvent.Parser, new[]{ "EventId", "EventTag", "EventName", "EventTimeStart", "EventTimeEnd", "EventPublic", "EventStageId", "EventStageName", "ActiveSectionId" }, null, null, null),
+                    new pbr::GeneratedClrTypeInfo(typeof(global::RyaUploader.ProtoBufs.CPreMatchInfoData), global::RyaUploader.ProtoBufs.CPreMatchInfoData.Parser, new[]{ "PredictionsPct", "Draft", "Stats" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::RyaUploader.ProtoBufs.CPreMatchInfoData.Types.TeamStats), global::RyaUploader.ProtoBufs.CPreMatchInfoData.Types.TeamStats.Parser, new[]{ "MatchInfoIdxtxt", "MatchInfoTxt", "MatchInfoTeams" }, null, null, null)}),
+                    new pbr::GeneratedClrTypeInfo(typeof(global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentMatchDraft), global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentMatchDraft.Parser, new[]{ "EventId", "EventStageId", "TeamId0", "TeamId1", "MapsCount", "MapsCurrent", "TeamIdStart", "TeamIdVeto1", "TeamIdPickn", "Drafts" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentMatchDraft.Types.Entry), global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentMatchDraft.Types.Entry.Parser, new[]{ "Mapid", "TeamIdCt" }, null, null, null)}),
+                    new pbr::GeneratedClrTypeInfo(typeof(global::RyaUploader.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingGC2ServerConfirm), global::RyaUploader.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingGC2ServerConfirm.Parser, new[]{ "Token", "Stamp", "Exchange" }, null, null, null),
+                    new pbr::GeneratedClrTypeInfo(typeof(global::RyaUploader.ProtoBufs.TournamentTeam), global::RyaUploader.ProtoBufs.TournamentTeam.Parser, new[]{ "TeamId", "TeamTag", "TeamFlag", "TeamName", "Players" }, null, null, null),
+                    new pbr::GeneratedClrTypeInfo(typeof(global::RyaUploader.ProtoBufs.TournamentPlayer), global::RyaUploader.ProtoBufs.TournamentPlayer.Parser, new[]{ "AccountId", "PlayerNick", "PlayerName", "PlayerDob", "PlayerFlag", "PlayerLocation", "PlayerDesc" }, null, null, null),
+                    new pbr::GeneratedClrTypeInfo(typeof(global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentInfo), global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentInfo.Parser, new[]{ "Sections", "TournamentEvent", "TournamentTeams" }, null, null, null),
+                    new pbr::GeneratedClrTypeInfo(typeof(global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentSection), global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentSection.Parser, new[]{ "Sectionid", "PersonaName", "Desc", "Groups" }, null, null, null),
+                    new pbr::GeneratedClrTypeInfo(typeof(global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentGroup), global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentGroup.Parser, new[]{ "Groupid", "PersonaName", "Desc", "PicksDeprecated", "Teams", "StageIds", "Picklockuntiltime", "Pickableteams", "PointsPerPick", "Picks" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentGroup.Types.Picks), global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentGroup.Types.Picks.Parser, new[]{ "Pickids" }, null, null, null)}),
+                    new pbr::GeneratedClrTypeInfo(typeof(global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentGroupTeam), global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentGroupTeam.Parser, new[]{ "TeamId", "Score", "Correctpick" }, null, null, null)
                 }));
         }
         #endregion
@@ -160,7 +160,7 @@ namespace RyaUploaderV2.ProtoBufs
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public static pbr::MessageDescriptor Descriptor
         {
-            get { return global::RyaUploaderV2.ProtoBufs.MatchinfoReflection.Descriptor.MessageTypes[0]; }
+            get { return global::RyaUploader.ProtoBufs.MatchinfoReflection.Descriptor.MessageTypes[0]; }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -236,31 +236,31 @@ namespace RyaUploaderV2.ProtoBufs
 
         /// <summary>Field number for the "matches" field.</summary>
         public const int MatchesFieldNumber = 4;
-        private static readonly pb::FieldCodec<global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_MatchInfo> _repeated_matches_codec
-            = pb::FieldCodec.ForMessage(34, global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_MatchInfo.Parser);
-        private readonly pbc::RepeatedField<global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_MatchInfo> matches_ = new pbc::RepeatedField<global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_MatchInfo>();
+        private static readonly pb::FieldCodec<global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_MatchInfo> _repeated_matches_codec
+            = pb::FieldCodec.ForMessage(34, global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_MatchInfo.Parser);
+        private readonly pbc::RepeatedField<global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_MatchInfo> matches_ = new pbc::RepeatedField<global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_MatchInfo>();
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public pbc::RepeatedField<global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_MatchInfo> Matches
+        public pbc::RepeatedField<global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_MatchInfo> Matches
         {
             get { return matches_; }
         }
 
         /// <summary>Field number for the "streams" field.</summary>
         public const int StreamsFieldNumber = 5;
-        private static readonly pb::FieldCodec<global::RyaUploaderV2.ProtoBufs.TournamentTeam> _repeated_streams_codec
-            = pb::FieldCodec.ForMessage(42, global::RyaUploaderV2.ProtoBufs.TournamentTeam.Parser);
-        private readonly pbc::RepeatedField<global::RyaUploaderV2.ProtoBufs.TournamentTeam> streams_ = new pbc::RepeatedField<global::RyaUploaderV2.ProtoBufs.TournamentTeam>();
+        private static readonly pb::FieldCodec<global::RyaUploader.ProtoBufs.TournamentTeam> _repeated_streams_codec
+            = pb::FieldCodec.ForMessage(42, global::RyaUploader.ProtoBufs.TournamentTeam.Parser);
+        private readonly pbc::RepeatedField<global::RyaUploader.ProtoBufs.TournamentTeam> streams_ = new pbc::RepeatedField<global::RyaUploader.ProtoBufs.TournamentTeam>();
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public pbc::RepeatedField<global::RyaUploaderV2.ProtoBufs.TournamentTeam> Streams
+        public pbc::RepeatedField<global::RyaUploader.ProtoBufs.TournamentTeam> Streams
         {
             get { return streams_; }
         }
 
         /// <summary>Field number for the "tournamentinfo" field.</summary>
         public const int TournamentinfoFieldNumber = 6;
-        private global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentInfo tournamentinfo_;
+        private global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentInfo tournamentinfo_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentInfo Tournamentinfo
+        public global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentInfo Tournamentinfo
         {
             get { return tournamentinfo_; }
             set
@@ -403,7 +403,7 @@ namespace RyaUploaderV2.ProtoBufs
             {
                 if (tournamentinfo_ == null)
                 {
-                    tournamentinfo_ = new global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentInfo();
+                    tournamentinfo_ = new global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentInfo();
                 }
                 Tournamentinfo.MergeFrom(other.Tournamentinfo);
             }
@@ -450,7 +450,7 @@ namespace RyaUploaderV2.ProtoBufs
                     {
                         if (tournamentinfo_ == null)
                         {
-                            tournamentinfo_ = new global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentInfo();
+                            tournamentinfo_ = new global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentInfo();
                         }
                         input.ReadMessage(tournamentinfo_);
                         break;
@@ -471,7 +471,7 @@ namespace RyaUploaderV2.ProtoBufs
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public static pbr::MessageDescriptor Descriptor
         {
-            get { return global::RyaUploaderV2.ProtoBufs.MatchinfoReflection.Descriptor.MessageTypes[1]; }
+            get { return global::RyaUploader.ProtoBufs.MatchinfoReflection.Descriptor.MessageTypes[1]; }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -533,9 +533,9 @@ namespace RyaUploaderV2.ProtoBufs
 
         /// <summary>Field number for the "watchablematchinfo" field.</summary>
         public const int WatchablematchinfoFieldNumber = 3;
-        private global::RyaUploaderV2.ProtoBufs.WatchableMatchInfo watchablematchinfo_;
+        private global::RyaUploader.ProtoBufs.WatchableMatchInfo watchablematchinfo_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public global::RyaUploaderV2.ProtoBufs.WatchableMatchInfo Watchablematchinfo
+        public global::RyaUploader.ProtoBufs.WatchableMatchInfo Watchablematchinfo
         {
             get { return watchablematchinfo_; }
             set
@@ -546,9 +546,9 @@ namespace RyaUploaderV2.ProtoBufs
 
         /// <summary>Field number for the "roundstats_legacy" field.</summary>
         public const int RoundstatsLegacyFieldNumber = 4;
-        private global::RyaUploaderV2.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingServerRoundStats roundstatsLegacy_;
+        private global::RyaUploader.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingServerRoundStats roundstatsLegacy_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public global::RyaUploaderV2.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingServerRoundStats RoundstatsLegacy
+        public global::RyaUploader.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingServerRoundStats RoundstatsLegacy
         {
             get { return roundstatsLegacy_; }
             set
@@ -559,11 +559,11 @@ namespace RyaUploaderV2.ProtoBufs
 
         /// <summary>Field number for the "roundstatsall" field.</summary>
         public const int RoundstatsallFieldNumber = 5;
-        private static readonly pb::FieldCodec<global::RyaUploaderV2.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingServerRoundStats> _repeated_roundstatsall_codec
-            = pb::FieldCodec.ForMessage(42, global::RyaUploaderV2.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingServerRoundStats.Parser);
-        private readonly pbc::RepeatedField<global::RyaUploaderV2.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingServerRoundStats> roundstatsall_ = new pbc::RepeatedField<global::RyaUploaderV2.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingServerRoundStats>();
+        private static readonly pb::FieldCodec<global::RyaUploader.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingServerRoundStats> _repeated_roundstatsall_codec
+            = pb::FieldCodec.ForMessage(42, global::RyaUploader.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingServerRoundStats.Parser);
+        private readonly pbc::RepeatedField<global::RyaUploader.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingServerRoundStats> roundstatsall_ = new pbc::RepeatedField<global::RyaUploader.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingServerRoundStats>();
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public pbc::RepeatedField<global::RyaUploaderV2.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingServerRoundStats> Roundstatsall
+        public pbc::RepeatedField<global::RyaUploader.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingServerRoundStats> Roundstatsall
         {
             get { return roundstatsall_; }
         }
@@ -692,7 +692,7 @@ namespace RyaUploaderV2.ProtoBufs
             {
                 if (watchablematchinfo_ == null)
                 {
-                    watchablematchinfo_ = new global::RyaUploaderV2.ProtoBufs.WatchableMatchInfo();
+                    watchablematchinfo_ = new global::RyaUploader.ProtoBufs.WatchableMatchInfo();
                 }
                 Watchablematchinfo.MergeFrom(other.Watchablematchinfo);
             }
@@ -700,7 +700,7 @@ namespace RyaUploaderV2.ProtoBufs
             {
                 if (roundstatsLegacy_ == null)
                 {
-                    roundstatsLegacy_ = new global::RyaUploaderV2.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingServerRoundStats();
+                    roundstatsLegacy_ = new global::RyaUploader.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingServerRoundStats();
                 }
                 RoundstatsLegacy.MergeFrom(other.RoundstatsLegacy);
             }
@@ -733,7 +733,7 @@ namespace RyaUploaderV2.ProtoBufs
                     {
                         if (watchablematchinfo_ == null)
                         {
-                            watchablematchinfo_ = new global::RyaUploaderV2.ProtoBufs.WatchableMatchInfo();
+                            watchablematchinfo_ = new global::RyaUploader.ProtoBufs.WatchableMatchInfo();
                         }
                         input.ReadMessage(watchablematchinfo_);
                         break;
@@ -742,7 +742,7 @@ namespace RyaUploaderV2.ProtoBufs
                     {
                         if (roundstatsLegacy_ == null)
                         {
-                            roundstatsLegacy_ = new global::RyaUploaderV2.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingServerRoundStats();
+                            roundstatsLegacy_ = new global::RyaUploader.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingServerRoundStats();
                         }
                         input.ReadMessage(roundstatsLegacy_);
                         break;
@@ -768,7 +768,7 @@ namespace RyaUploaderV2.ProtoBufs
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public static pbr::MessageDescriptor Descriptor
         {
-            get { return global::RyaUploaderV2.ProtoBufs.MatchinfoReflection.Descriptor.MessageTypes[2]; }
+            get { return global::RyaUploader.ProtoBufs.MatchinfoReflection.Descriptor.MessageTypes[2]; }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1333,7 +1333,7 @@ namespace RyaUploaderV2.ProtoBufs
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public static pbr::MessageDescriptor Descriptor
         {
-            get { return global::RyaUploaderV2.ProtoBufs.MatchinfoReflection.Descriptor.MessageTypes[3]; }
+            get { return global::RyaUploader.ProtoBufs.MatchinfoReflection.Descriptor.MessageTypes[3]; }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1403,9 +1403,9 @@ namespace RyaUploaderV2.ProtoBufs
 
         /// <summary>Field number for the "reservation" field.</summary>
         public const int ReservationFieldNumber = 2;
-        private global::RyaUploaderV2.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve reservation_;
+        private global::RyaUploader.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve reservation_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public global::RyaUploaderV2.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve Reservation
+        public global::RyaUploader.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve Reservation
         {
             get { return reservation_; }
             set
@@ -1534,9 +1534,9 @@ namespace RyaUploaderV2.ProtoBufs
 
         /// <summary>Field number for the "confirm" field.</summary>
         public const int ConfirmFieldNumber = 13;
-        private global::RyaUploaderV2.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingGC2ServerConfirm confirm_;
+        private global::RyaUploader.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingGC2ServerConfirm confirm_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public global::RyaUploaderV2.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingGC2ServerConfirm Confirm
+        public global::RyaUploader.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingGC2ServerConfirm Confirm
         {
             get { return confirm_; }
             set
@@ -1689,9 +1689,9 @@ namespace RyaUploaderV2.ProtoBufs
 
         /// <summary>Field number for the "drop_info" field.</summary>
         public const int DropInfoFieldNumber = 26;
-        private global::RyaUploaderV2.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingServerRoundStats.Types.DropInfo dropInfo_;
+        private global::RyaUploader.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingServerRoundStats.Types.DropInfo dropInfo_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public global::RyaUploaderV2.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingServerRoundStats.Types.DropInfo DropInfo
+        public global::RyaUploader.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingServerRoundStats.Types.DropInfo DropInfo
         {
             get { return dropInfo_; }
             set
@@ -1967,7 +1967,7 @@ namespace RyaUploaderV2.ProtoBufs
             {
                 if (reservation_ == null)
                 {
-                    reservation_ = new global::RyaUploaderV2.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve();
+                    reservation_ = new global::RyaUploader.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve();
                 }
                 Reservation.MergeFrom(other.Reservation);
             }
@@ -1997,7 +1997,7 @@ namespace RyaUploaderV2.ProtoBufs
             {
                 if (confirm_ == null)
                 {
-                    confirm_ = new global::RyaUploaderV2.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingGC2ServerConfirm();
+                    confirm_ = new global::RyaUploader.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingGC2ServerConfirm();
                 }
                 Confirm.MergeFrom(other.Confirm);
             }
@@ -2032,7 +2032,7 @@ namespace RyaUploaderV2.ProtoBufs
             {
                 if (dropInfo_ == null)
                 {
-                    dropInfo_ = new global::RyaUploaderV2.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingServerRoundStats.Types.DropInfo();
+                    dropInfo_ = new global::RyaUploader.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingServerRoundStats.Types.DropInfo();
                 }
                 DropInfo.MergeFrom(other.DropInfo);
             }
@@ -2059,7 +2059,7 @@ namespace RyaUploaderV2.ProtoBufs
                     {
                         if (reservation_ == null)
                         {
-                            reservation_ = new global::RyaUploaderV2.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve();
+                            reservation_ = new global::RyaUploader.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve();
                         }
                         input.ReadMessage(reservation_);
                         break;
@@ -2124,7 +2124,7 @@ namespace RyaUploaderV2.ProtoBufs
                     {
                         if (confirm_ == null)
                         {
-                            confirm_ = new global::RyaUploaderV2.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingGC2ServerConfirm();
+                            confirm_ = new global::RyaUploader.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingGC2ServerConfirm();
                         }
                         input.ReadMessage(confirm_);
                         break;
@@ -2200,7 +2200,7 @@ namespace RyaUploaderV2.ProtoBufs
                     {
                         if (dropInfo_ == null)
                         {
-                            dropInfo_ = new global::RyaUploaderV2.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingServerRoundStats.Types.DropInfo();
+                            dropInfo_ = new global::RyaUploader.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingServerRoundStats.Types.DropInfo();
                         }
                         input.ReadMessage(dropInfo_);
                         break;
@@ -2224,7 +2224,7 @@ namespace RyaUploaderV2.ProtoBufs
                 [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
                 public static pbr::MessageDescriptor Descriptor
                 {
-                    get { return global::RyaUploaderV2.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingServerRoundStats.Descriptor.NestedTypes[0]; }
+                    get { return global::RyaUploader.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingServerRoundStats.Descriptor.NestedTypes[0]; }
                 }
 
                 [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2386,7 +2386,7 @@ namespace RyaUploaderV2.ProtoBufs
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public static pbr::MessageDescriptor Descriptor
         {
-            get { return global::RyaUploaderV2.ProtoBufs.MatchinfoReflection.Descriptor.MessageTypes[4]; }
+            get { return global::RyaUploader.ProtoBufs.MatchinfoReflection.Descriptor.MessageTypes[4]; }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2482,11 +2482,11 @@ namespace RyaUploaderV2.ProtoBufs
 
         /// <summary>Field number for the "rankings" field.</summary>
         public const int RankingsFieldNumber = 5;
-        private static readonly pb::FieldCodec<global::RyaUploaderV2.ProtoBufs.PlayerRankingInfo> _repeated_rankings_codec
-            = pb::FieldCodec.ForMessage(42, global::RyaUploaderV2.ProtoBufs.PlayerRankingInfo.Parser);
-        private readonly pbc::RepeatedField<global::RyaUploaderV2.ProtoBufs.PlayerRankingInfo> rankings_ = new pbc::RepeatedField<global::RyaUploaderV2.ProtoBufs.PlayerRankingInfo>();
+        private static readonly pb::FieldCodec<global::RyaUploader.ProtoBufs.PlayerRankingInfo> _repeated_rankings_codec
+            = pb::FieldCodec.ForMessage(42, global::RyaUploader.ProtoBufs.PlayerRankingInfo.Parser);
+        private readonly pbc::RepeatedField<global::RyaUploader.ProtoBufs.PlayerRankingInfo> rankings_ = new pbc::RepeatedField<global::RyaUploader.ProtoBufs.PlayerRankingInfo>();
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public pbc::RepeatedField<global::RyaUploaderV2.ProtoBufs.PlayerRankingInfo> Rankings
+        public pbc::RepeatedField<global::RyaUploader.ProtoBufs.PlayerRankingInfo> Rankings
         {
             get { return rankings_; }
         }
@@ -2530,11 +2530,11 @@ namespace RyaUploaderV2.ProtoBufs
 
         /// <summary>Field number for the "whitelist" field.</summary>
         public const int WhitelistFieldNumber = 9;
-        private static readonly pb::FieldCodec<global::RyaUploaderV2.ProtoBufs.IpAddressMask> _repeated_whitelist_codec
-            = pb::FieldCodec.ForMessage(74, global::RyaUploaderV2.ProtoBufs.IpAddressMask.Parser);
-        private readonly pbc::RepeatedField<global::RyaUploaderV2.ProtoBufs.IpAddressMask> whitelist_ = new pbc::RepeatedField<global::RyaUploaderV2.ProtoBufs.IpAddressMask>();
+        private static readonly pb::FieldCodec<global::RyaUploader.ProtoBufs.IpAddressMask> _repeated_whitelist_codec
+            = pb::FieldCodec.ForMessage(74, global::RyaUploader.ProtoBufs.IpAddressMask.Parser);
+        private readonly pbc::RepeatedField<global::RyaUploader.ProtoBufs.IpAddressMask> whitelist_ = new pbc::RepeatedField<global::RyaUploader.ProtoBufs.IpAddressMask>();
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public pbc::RepeatedField<global::RyaUploaderV2.ProtoBufs.IpAddressMask> Whitelist
+        public pbc::RepeatedField<global::RyaUploader.ProtoBufs.IpAddressMask> Whitelist
         {
             get { return whitelist_; }
         }
@@ -2554,9 +2554,9 @@ namespace RyaUploaderV2.ProtoBufs
 
         /// <summary>Field number for the "tournament_event" field.</summary>
         public const int TournamentEventFieldNumber = 11;
-        private global::RyaUploaderV2.ProtoBufs.TournamentEvent tournamentEvent_;
+        private global::RyaUploader.ProtoBufs.TournamentEvent tournamentEvent_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public global::RyaUploaderV2.ProtoBufs.TournamentEvent TournamentEvent
+        public global::RyaUploader.ProtoBufs.TournamentEvent TournamentEvent
         {
             get { return tournamentEvent_; }
             set
@@ -2567,11 +2567,11 @@ namespace RyaUploaderV2.ProtoBufs
 
         /// <summary>Field number for the "tournament_teams" field.</summary>
         public const int TournamentTeamsFieldNumber = 12;
-        private static readonly pb::FieldCodec<global::RyaUploaderV2.ProtoBufs.TournamentTeam> _repeated_tournamentTeams_codec
-            = pb::FieldCodec.ForMessage(98, global::RyaUploaderV2.ProtoBufs.TournamentTeam.Parser);
-        private readonly pbc::RepeatedField<global::RyaUploaderV2.ProtoBufs.TournamentTeam> tournamentTeams_ = new pbc::RepeatedField<global::RyaUploaderV2.ProtoBufs.TournamentTeam>();
+        private static readonly pb::FieldCodec<global::RyaUploader.ProtoBufs.TournamentTeam> _repeated_tournamentTeams_codec
+            = pb::FieldCodec.ForMessage(98, global::RyaUploader.ProtoBufs.TournamentTeam.Parser);
+        private readonly pbc::RepeatedField<global::RyaUploader.ProtoBufs.TournamentTeam> tournamentTeams_ = new pbc::RepeatedField<global::RyaUploader.ProtoBufs.TournamentTeam>();
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public pbc::RepeatedField<global::RyaUploaderV2.ProtoBufs.TournamentTeam> TournamentTeams
+        public pbc::RepeatedField<global::RyaUploader.ProtoBufs.TournamentTeam> TournamentTeams
         {
             get { return tournamentTeams_; }
         }
@@ -2602,9 +2602,9 @@ namespace RyaUploaderV2.ProtoBufs
 
         /// <summary>Field number for the "pre_match_data" field.</summary>
         public const int PreMatchDataFieldNumber = 15;
-        private global::RyaUploaderV2.ProtoBufs.CPreMatchInfoData preMatchData_;
+        private global::RyaUploader.ProtoBufs.CPreMatchInfoData preMatchData_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public global::RyaUploaderV2.ProtoBufs.CPreMatchInfoData PreMatchData
+        public global::RyaUploader.ProtoBufs.CPreMatchInfoData PreMatchData
         {
             get { return preMatchData_; }
             set
@@ -2832,7 +2832,7 @@ namespace RyaUploaderV2.ProtoBufs
             {
                 if (tournamentEvent_ == null)
                 {
-                    tournamentEvent_ = new global::RyaUploaderV2.ProtoBufs.TournamentEvent();
+                    tournamentEvent_ = new global::RyaUploader.ProtoBufs.TournamentEvent();
                 }
                 TournamentEvent.MergeFrom(other.TournamentEvent);
             }
@@ -2846,7 +2846,7 @@ namespace RyaUploaderV2.ProtoBufs
             {
                 if (preMatchData_ == null)
                 {
-                    preMatchData_ = new global::RyaUploaderV2.ProtoBufs.CPreMatchInfoData();
+                    preMatchData_ = new global::RyaUploader.ProtoBufs.CPreMatchInfoData();
                 }
                 PreMatchData.MergeFrom(other.PreMatchData);
             }
@@ -2920,7 +2920,7 @@ namespace RyaUploaderV2.ProtoBufs
                     {
                         if (tournamentEvent_ == null)
                         {
-                            tournamentEvent_ = new global::RyaUploaderV2.ProtoBufs.TournamentEvent();
+                            tournamentEvent_ = new global::RyaUploader.ProtoBufs.TournamentEvent();
                         }
                         input.ReadMessage(tournamentEvent_);
                         break;
@@ -2945,7 +2945,7 @@ namespace RyaUploaderV2.ProtoBufs
                     {
                         if (preMatchData_ == null)
                         {
-                            preMatchData_ = new global::RyaUploaderV2.ProtoBufs.CPreMatchInfoData();
+                            preMatchData_ = new global::RyaUploader.ProtoBufs.CPreMatchInfoData();
                         }
                         input.ReadMessage(preMatchData_);
                         break;
@@ -2966,7 +2966,7 @@ namespace RyaUploaderV2.ProtoBufs
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public static pbr::MessageDescriptor Descriptor
         {
-            get { return global::RyaUploaderV2.ProtoBufs.MatchinfoReflection.Descriptor.MessageTypes[5]; }
+            get { return global::RyaUploader.ProtoBufs.MatchinfoReflection.Descriptor.MessageTypes[5]; }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3225,7 +3225,7 @@ namespace RyaUploaderV2.ProtoBufs
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public static pbr::MessageDescriptor Descriptor
         {
-            get { return global::RyaUploaderV2.ProtoBufs.MatchinfoReflection.Descriptor.MessageTypes[6]; }
+            get { return global::RyaUploader.ProtoBufs.MatchinfoReflection.Descriptor.MessageTypes[6]; }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3552,7 +3552,7 @@ namespace RyaUploaderV2.ProtoBufs
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public static pbr::MessageDescriptor Descriptor
         {
-            get { return global::RyaUploaderV2.ProtoBufs.MatchinfoReflection.Descriptor.MessageTypes[7]; }
+            get { return global::RyaUploader.ProtoBufs.MatchinfoReflection.Descriptor.MessageTypes[7]; }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3981,7 +3981,7 @@ namespace RyaUploaderV2.ProtoBufs
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public static pbr::MessageDescriptor Descriptor
         {
-            get { return global::RyaUploaderV2.ProtoBufs.MatchinfoReflection.Descriptor.MessageTypes[8]; }
+            get { return global::RyaUploader.ProtoBufs.MatchinfoReflection.Descriptor.MessageTypes[8]; }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4028,9 +4028,9 @@ namespace RyaUploaderV2.ProtoBufs
 
         /// <summary>Field number for the "draft" field.</summary>
         public const int DraftFieldNumber = 4;
-        private global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentMatchDraft draft_;
+        private global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentMatchDraft draft_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentMatchDraft Draft
+        public global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentMatchDraft Draft
         {
             get { return draft_; }
             set
@@ -4041,11 +4041,11 @@ namespace RyaUploaderV2.ProtoBufs
 
         /// <summary>Field number for the "stats" field.</summary>
         public const int StatsFieldNumber = 5;
-        private static readonly pb::FieldCodec<global::RyaUploaderV2.ProtoBufs.CPreMatchInfoData.Types.TeamStats> _repeated_stats_codec
-            = pb::FieldCodec.ForMessage(42, global::RyaUploaderV2.ProtoBufs.CPreMatchInfoData.Types.TeamStats.Parser);
-        private readonly pbc::RepeatedField<global::RyaUploaderV2.ProtoBufs.CPreMatchInfoData.Types.TeamStats> stats_ = new pbc::RepeatedField<global::RyaUploaderV2.ProtoBufs.CPreMatchInfoData.Types.TeamStats>();
+        private static readonly pb::FieldCodec<global::RyaUploader.ProtoBufs.CPreMatchInfoData.Types.TeamStats> _repeated_stats_codec
+            = pb::FieldCodec.ForMessage(42, global::RyaUploader.ProtoBufs.CPreMatchInfoData.Types.TeamStats.Parser);
+        private readonly pbc::RepeatedField<global::RyaUploader.ProtoBufs.CPreMatchInfoData.Types.TeamStats> stats_ = new pbc::RepeatedField<global::RyaUploader.ProtoBufs.CPreMatchInfoData.Types.TeamStats>();
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public pbc::RepeatedField<global::RyaUploaderV2.ProtoBufs.CPreMatchInfoData.Types.TeamStats> Stats
+        public pbc::RepeatedField<global::RyaUploader.ProtoBufs.CPreMatchInfoData.Types.TeamStats> Stats
         {
             get { return stats_; }
         }
@@ -4148,7 +4148,7 @@ namespace RyaUploaderV2.ProtoBufs
             {
                 if (draft_ == null)
                 {
-                    draft_ = new global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentMatchDraft();
+                    draft_ = new global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentMatchDraft();
                 }
                 Draft.MergeFrom(other.Draft);
             }
@@ -4176,7 +4176,7 @@ namespace RyaUploaderV2.ProtoBufs
                     {
                         if (draft_ == null)
                         {
-                            draft_ = new global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentMatchDraft();
+                            draft_ = new global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentMatchDraft();
                         }
                         input.ReadMessage(draft_);
                         break;
@@ -4205,7 +4205,7 @@ namespace RyaUploaderV2.ProtoBufs
                 [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
                 public static pbr::MessageDescriptor Descriptor
                 {
-                    get { return global::RyaUploaderV2.ProtoBufs.CPreMatchInfoData.Descriptor.NestedTypes[0]; }
+                    get { return global::RyaUploader.ProtoBufs.CPreMatchInfoData.Descriptor.NestedTypes[0]; }
                 }
 
                 [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4423,7 +4423,7 @@ namespace RyaUploaderV2.ProtoBufs
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public static pbr::MessageDescriptor Descriptor
         {
-            get { return global::RyaUploaderV2.ProtoBufs.MatchinfoReflection.Descriptor.MessageTypes[9]; }
+            get { return global::RyaUploader.ProtoBufs.MatchinfoReflection.Descriptor.MessageTypes[9]; }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4581,11 +4581,11 @@ namespace RyaUploaderV2.ProtoBufs
 
         /// <summary>Field number for the "drafts" field.</summary>
         public const int DraftsFieldNumber = 10;
-        private static readonly pb::FieldCodec<global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentMatchDraft.Types.Entry> _repeated_drafts_codec
-            = pb::FieldCodec.ForMessage(82, global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentMatchDraft.Types.Entry.Parser);
-        private readonly pbc::RepeatedField<global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentMatchDraft.Types.Entry> drafts_ = new pbc::RepeatedField<global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentMatchDraft.Types.Entry>();
+        private static readonly pb::FieldCodec<global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentMatchDraft.Types.Entry> _repeated_drafts_codec
+            = pb::FieldCodec.ForMessage(82, global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentMatchDraft.Types.Entry.Parser);
+        private readonly pbc::RepeatedField<global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentMatchDraft.Types.Entry> drafts_ = new pbc::RepeatedField<global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentMatchDraft.Types.Entry>();
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public pbc::RepeatedField<global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentMatchDraft.Types.Entry> Drafts
+        public pbc::RepeatedField<global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentMatchDraft.Types.Entry> Drafts
         {
             get { return drafts_; }
         }
@@ -4877,7 +4877,7 @@ namespace RyaUploaderV2.ProtoBufs
                 [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
                 public static pbr::MessageDescriptor Descriptor
                 {
-                    get { return global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentMatchDraft.Descriptor.NestedTypes[0]; }
+                    get { return global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentMatchDraft.Descriptor.NestedTypes[0]; }
                 }
 
                 [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5073,7 +5073,7 @@ namespace RyaUploaderV2.ProtoBufs
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public static pbr::MessageDescriptor Descriptor
         {
-            get { return global::RyaUploaderV2.ProtoBufs.MatchinfoReflection.Descriptor.MessageTypes[10]; }
+            get { return global::RyaUploader.ProtoBufs.MatchinfoReflection.Descriptor.MessageTypes[10]; }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5298,7 +5298,7 @@ namespace RyaUploaderV2.ProtoBufs
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public static pbr::MessageDescriptor Descriptor
         {
-            get { return global::RyaUploaderV2.ProtoBufs.MatchinfoReflection.Descriptor.MessageTypes[11]; }
+            get { return global::RyaUploader.ProtoBufs.MatchinfoReflection.Descriptor.MessageTypes[11]; }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5386,11 +5386,11 @@ namespace RyaUploaderV2.ProtoBufs
 
         /// <summary>Field number for the "players" field.</summary>
         public const int PlayersFieldNumber = 5;
-        private static readonly pb::FieldCodec<global::RyaUploaderV2.ProtoBufs.TournamentPlayer> _repeated_players_codec
-            = pb::FieldCodec.ForMessage(42, global::RyaUploaderV2.ProtoBufs.TournamentPlayer.Parser);
-        private readonly pbc::RepeatedField<global::RyaUploaderV2.ProtoBufs.TournamentPlayer> players_ = new pbc::RepeatedField<global::RyaUploaderV2.ProtoBufs.TournamentPlayer>();
+        private static readonly pb::FieldCodec<global::RyaUploader.ProtoBufs.TournamentPlayer> _repeated_players_codec
+            = pb::FieldCodec.ForMessage(42, global::RyaUploader.ProtoBufs.TournamentPlayer.Parser);
+        private readonly pbc::RepeatedField<global::RyaUploader.ProtoBufs.TournamentPlayer> players_ = new pbc::RepeatedField<global::RyaUploader.ProtoBufs.TournamentPlayer>();
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public pbc::RepeatedField<global::RyaUploaderV2.ProtoBufs.TournamentPlayer> Players
+        public pbc::RepeatedField<global::RyaUploader.ProtoBufs.TournamentPlayer> Players
         {
             get { return players_; }
         }
@@ -5579,7 +5579,7 @@ namespace RyaUploaderV2.ProtoBufs
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public static pbr::MessageDescriptor Descriptor
         {
-            get { return global::RyaUploaderV2.ProtoBufs.MatchinfoReflection.Descriptor.MessageTypes[12]; }
+            get { return global::RyaUploader.ProtoBufs.MatchinfoReflection.Descriptor.MessageTypes[12]; }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5940,7 +5940,7 @@ namespace RyaUploaderV2.ProtoBufs
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public static pbr::MessageDescriptor Descriptor
         {
-            get { return global::RyaUploaderV2.ProtoBufs.MatchinfoReflection.Descriptor.MessageTypes[13]; }
+            get { return global::RyaUploader.ProtoBufs.MatchinfoReflection.Descriptor.MessageTypes[13]; }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5974,20 +5974,20 @@ namespace RyaUploaderV2.ProtoBufs
 
         /// <summary>Field number for the "sections" field.</summary>
         public const int SectionsFieldNumber = 1;
-        private static readonly pb::FieldCodec<global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentSection> _repeated_sections_codec
-            = pb::FieldCodec.ForMessage(10, global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentSection.Parser);
-        private readonly pbc::RepeatedField<global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentSection> sections_ = new pbc::RepeatedField<global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentSection>();
+        private static readonly pb::FieldCodec<global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentSection> _repeated_sections_codec
+            = pb::FieldCodec.ForMessage(10, global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentSection.Parser);
+        private readonly pbc::RepeatedField<global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentSection> sections_ = new pbc::RepeatedField<global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentSection>();
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public pbc::RepeatedField<global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentSection> Sections
+        public pbc::RepeatedField<global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentSection> Sections
         {
             get { return sections_; }
         }
 
         /// <summary>Field number for the "tournament_event" field.</summary>
         public const int TournamentEventFieldNumber = 2;
-        private global::RyaUploaderV2.ProtoBufs.TournamentEvent tournamentEvent_;
+        private global::RyaUploader.ProtoBufs.TournamentEvent tournamentEvent_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public global::RyaUploaderV2.ProtoBufs.TournamentEvent TournamentEvent
+        public global::RyaUploader.ProtoBufs.TournamentEvent TournamentEvent
         {
             get { return tournamentEvent_; }
             set
@@ -5998,11 +5998,11 @@ namespace RyaUploaderV2.ProtoBufs
 
         /// <summary>Field number for the "tournament_teams" field.</summary>
         public const int TournamentTeamsFieldNumber = 3;
-        private static readonly pb::FieldCodec<global::RyaUploaderV2.ProtoBufs.TournamentTeam> _repeated_tournamentTeams_codec
-            = pb::FieldCodec.ForMessage(26, global::RyaUploaderV2.ProtoBufs.TournamentTeam.Parser);
-        private readonly pbc::RepeatedField<global::RyaUploaderV2.ProtoBufs.TournamentTeam> tournamentTeams_ = new pbc::RepeatedField<global::RyaUploaderV2.ProtoBufs.TournamentTeam>();
+        private static readonly pb::FieldCodec<global::RyaUploader.ProtoBufs.TournamentTeam> _repeated_tournamentTeams_codec
+            = pb::FieldCodec.ForMessage(26, global::RyaUploader.ProtoBufs.TournamentTeam.Parser);
+        private readonly pbc::RepeatedField<global::RyaUploader.ProtoBufs.TournamentTeam> tournamentTeams_ = new pbc::RepeatedField<global::RyaUploader.ProtoBufs.TournamentTeam>();
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public pbc::RepeatedField<global::RyaUploaderV2.ProtoBufs.TournamentTeam> TournamentTeams
+        public pbc::RepeatedField<global::RyaUploader.ProtoBufs.TournamentTeam> TournamentTeams
         {
             get { return tournamentTeams_; }
         }
@@ -6095,7 +6095,7 @@ namespace RyaUploaderV2.ProtoBufs
             {
                 if (tournamentEvent_ == null)
                 {
-                    tournamentEvent_ = new global::RyaUploaderV2.ProtoBufs.TournamentEvent();
+                    tournamentEvent_ = new global::RyaUploader.ProtoBufs.TournamentEvent();
                 }
                 TournamentEvent.MergeFrom(other.TournamentEvent);
             }
@@ -6123,7 +6123,7 @@ namespace RyaUploaderV2.ProtoBufs
                     {
                         if (tournamentEvent_ == null)
                         {
-                            tournamentEvent_ = new global::RyaUploaderV2.ProtoBufs.TournamentEvent();
+                            tournamentEvent_ = new global::RyaUploader.ProtoBufs.TournamentEvent();
                         }
                         input.ReadMessage(tournamentEvent_);
                         break;
@@ -6149,7 +6149,7 @@ namespace RyaUploaderV2.ProtoBufs
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public static pbr::MessageDescriptor Descriptor
         {
-            get { return global::RyaUploaderV2.ProtoBufs.MatchinfoReflection.Descriptor.MessageTypes[14]; }
+            get { return global::RyaUploader.ProtoBufs.MatchinfoReflection.Descriptor.MessageTypes[14]; }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6223,11 +6223,11 @@ namespace RyaUploaderV2.ProtoBufs
 
         /// <summary>Field number for the "groups" field.</summary>
         public const int GroupsFieldNumber = 4;
-        private static readonly pb::FieldCodec<global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentGroup> _repeated_groups_codec
-            = pb::FieldCodec.ForMessage(34, global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentGroup.Parser);
-        private readonly pbc::RepeatedField<global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentGroup> groups_ = new pbc::RepeatedField<global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentGroup>();
+        private static readonly pb::FieldCodec<global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentGroup> _repeated_groups_codec
+            = pb::FieldCodec.ForMessage(34, global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentGroup.Parser);
+        private readonly pbc::RepeatedField<global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentGroup> groups_ = new pbc::RepeatedField<global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentGroup>();
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public pbc::RepeatedField<global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentGroup> Groups
+        public pbc::RepeatedField<global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentGroup> Groups
         {
             get { return groups_; }
         }
@@ -6396,7 +6396,7 @@ namespace RyaUploaderV2.ProtoBufs
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public static pbr::MessageDescriptor Descriptor
         {
-            get { return global::RyaUploaderV2.ProtoBufs.MatchinfoReflection.Descriptor.MessageTypes[15]; }
+            get { return global::RyaUploader.ProtoBufs.MatchinfoReflection.Descriptor.MessageTypes[15]; }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6489,11 +6489,11 @@ namespace RyaUploaderV2.ProtoBufs
 
         /// <summary>Field number for the "teams" field.</summary>
         public const int TeamsFieldNumber = 5;
-        private static readonly pb::FieldCodec<global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentGroupTeam> _repeated_teams_codec
-            = pb::FieldCodec.ForMessage(42, global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentGroupTeam.Parser);
-        private readonly pbc::RepeatedField<global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentGroupTeam> teams_ = new pbc::RepeatedField<global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentGroupTeam>();
+        private static readonly pb::FieldCodec<global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentGroupTeam> _repeated_teams_codec
+            = pb::FieldCodec.ForMessage(42, global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentGroupTeam.Parser);
+        private readonly pbc::RepeatedField<global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentGroupTeam> teams_ = new pbc::RepeatedField<global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentGroupTeam>();
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public pbc::RepeatedField<global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentGroupTeam> Teams
+        public pbc::RepeatedField<global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentGroupTeam> Teams
         {
             get { return teams_; }
         }
@@ -6550,11 +6550,11 @@ namespace RyaUploaderV2.ProtoBufs
 
         /// <summary>Field number for the "picks" field.</summary>
         public const int PicksFieldNumber = 10;
-        private static readonly pb::FieldCodec<global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentGroup.Types.Picks> _repeated_picks_codec
-            = pb::FieldCodec.ForMessage(82, global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentGroup.Types.Picks.Parser);
-        private readonly pbc::RepeatedField<global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentGroup.Types.Picks> picks_ = new pbc::RepeatedField<global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentGroup.Types.Picks>();
+        private static readonly pb::FieldCodec<global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentGroup.Types.Picks> _repeated_picks_codec
+            = pb::FieldCodec.ForMessage(82, global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentGroup.Types.Picks.Parser);
+        private readonly pbc::RepeatedField<global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentGroup.Types.Picks> picks_ = new pbc::RepeatedField<global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentGroup.Types.Picks>();
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public pbc::RepeatedField<global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentGroup.Types.Picks> Picks
+        public pbc::RepeatedField<global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentGroup.Types.Picks> Picks
         {
             get { return picks_; }
         }
@@ -6827,7 +6827,7 @@ namespace RyaUploaderV2.ProtoBufs
                 [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
                 public static pbr::MessageDescriptor Descriptor
                 {
-                    get { return global::RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_TournamentGroup.Descriptor.NestedTypes[0]; }
+                    get { return global::RyaUploader.ProtoBufs.CDataGCCStrike15_v2_TournamentGroup.Descriptor.NestedTypes[0]; }
                 }
 
                 [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6978,7 +6978,7 @@ namespace RyaUploaderV2.ProtoBufs
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public static pbr::MessageDescriptor Descriptor
         {
-            get { return global::RyaUploaderV2.ProtoBufs.MatchinfoReflection.Descriptor.MessageTypes[16]; }
+            get { return global::RyaUploader.ProtoBufs.MatchinfoReflection.Descriptor.MessageTypes[16]; }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

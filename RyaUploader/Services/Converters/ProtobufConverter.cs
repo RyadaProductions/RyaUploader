@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using RyaUploaderV2.Models;
-using RyaUploaderV2.Services.SteamServices;
+using RyaUploader.Models;
+using RyaUploader.Services.SteamServices;
 using Serilog;
-using MatchInfo = RyaUploaderV2.ProtoBufs.CDataGCCStrike15_v2_MatchInfo;
-using RoundStats = RyaUploaderV2.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingServerRoundStats;
+using MatchInfo = RyaUploader.ProtoBufs.CDataGCCStrike15_v2_MatchInfo;
+using RoundStats = RyaUploader.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingServerRoundStats;
 
-namespace RyaUploaderV2.Services.Converters
+namespace RyaUploader.Services.Converters
 {
     public interface IProtobufConverter
     {
