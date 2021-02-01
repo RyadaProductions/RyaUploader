@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using RyaUploaderV2.Properties;
 using RyaUploaderV2.Services;
 using RyaUploaderV2.Services.Converters;
 using RyaUploaderV2.Services.FileServices;
@@ -80,35 +79,35 @@ namespace RyaUploaderV2.Models
             switch (exitCode)
             {
                 case 1:
-                    CurrentState = Resources.DialogBoilerNotFound;
+                    CurrentState = "boiler.exe could not be found.";
                     break;
                 case 2:
-                    CurrentState = Resources.DialogBoilerIncorrect;
+                    CurrentState = "the version of boiler.exe is incorrect";
                     break;
                 case -1:
-                    CurrentState = Resources.DialogInvalidArguments;
+                    CurrentState = "invalids arguments.";
                     break;
                 case -2:
-                    CurrentState = Resources.DialogRestartSteam;
+                    CurrentState = "steam is restarting.";
                     break;
                 case -3:
                 case -4:
-                    CurrentState = Resources.DialogSteamNotRunningOrNotLoggedIn;
+                    CurrentState = "steam is not running or logged in.";
                     break;
                 case -5:
                 case -6:
                 case -7:
-                    CurrentState = Resources.DialogErrorWhileRetrievingMatchesData;
+                    CurrentState = "error occured while retrieving matches data.";
                     break;
                 case -8:
-                    CurrentState = Resources.DialogNoNewerDemo;
+                    CurrentState = "no new demo has been found.";
                     break;
                 case 0:
-                    CurrentState = Resources.BoilerSuccess;
+                    CurrentState = "succesfully pulled recent matches from CSGO, starting the upload process.";
                     await HandleProtobuf().ConfigureAwait(false);
                     break;
                 default:
-                    CurrentState = Resources.UnknownError;
+                    CurrentState = "unknown error.";
                     break;
             }
         }
@@ -122,7 +121,7 @@ namespace RyaUploaderV2.Models
             if (newMatches.Count == 0)
             {
                 Log.Information("The protobuf did not contain new matches.");
-                CurrentState = Resources.DialogNoNewerDemo;
+                CurrentState = "no new demo has been found.";
                 return;
             }
 
