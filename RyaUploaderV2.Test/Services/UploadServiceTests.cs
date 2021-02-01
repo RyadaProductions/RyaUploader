@@ -1,23 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Moq;
-using NUnit.Framework;
 using RyaUploaderV2.Facade;
 using RyaUploaderV2.Services;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 
 namespace RyaUploaderV2.Test.Services
 {
-    [TestFixture]
+    [TestClass]
     public class UploadServiceTests
     {
         /// <summary>
         /// Tests wether or not the Uploader is able to succesfully send a ShareCode
         /// </summary>
         /// <returns></returns>
-        [Test]
+        [TestMethod]
         public async Task UploadShareCodes_ReturnsWithoutException()
         {
             var listOfCodes = new List<string> { "CSGO-3V2i2-d2zCP-3bFns-RKunm-WNmkP" };

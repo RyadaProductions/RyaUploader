@@ -1,17 +1,17 @@
 ﻿using System.Threading.Tasks;
 using Moq;
-using NUnit.Framework;
 using RyaUploaderV2.Facade;
 using RyaUploaderV2.Services.SteamServices;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace RyaUploaderV2.Test.Services
 {
-    [TestFixture]
+    [TestClass]
     public class SteamApiTests
     {
         private string _key = "3C97DE56AF018917F183FB805DA6B17B";
 
-        [Test]
+        [TestMethod]
         public async Task GetPlayerProfile_ReturnsValidPersonModel()
         {
             var mockHandler = new Mock<IHttpClient>();
