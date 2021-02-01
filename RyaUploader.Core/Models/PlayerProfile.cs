@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-
-namespace RyaUploader.Core.Models
+﻿namespace RyaUploader.Core.Models
 {
     public class PlayerProfile
     {
