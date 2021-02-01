@@ -23,7 +23,7 @@ namespace RyaUploaderV2.Services.FileServices
             Log.Information($"Writing matches to file: {file}.");
             using (var stream = File.CreateText(file))
             {
-                var serializer = new JsonSerializer();
+                var serializer = new JsonSerializer {Formatting = Formatting.Indented};
                 serializer.Serialize(stream, matches);
             }
         }
