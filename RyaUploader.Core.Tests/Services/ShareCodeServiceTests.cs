@@ -13,7 +13,7 @@ namespace RyaUploader.Core.Tests.Services
         /// Test method intended to check if the ShareCodeConverter is able to convert a Match into a ShareCode.
         /// </summary>
         [TestMethod]
-        public void GetNewestDemoUrls_CanProperlyConvertMatchToShareCode()
+        public void ConvertMatchListToShareCodes_CanProperlyConvertMatchToShareCode()
         {
             var mockProtobuf = new List<Match>
             {
