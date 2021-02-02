@@ -53,12 +53,7 @@ namespace RyaUploader
             var tempFolder = Path.Combine(Path.GetTempPath(), "RyaUploader");
             Directory.CreateDirectory(tempFolder);
 
-            Copy3rdPartyFileTo(tempFolder, executingFolder, "Boiler.exe");
-            Copy3rdPartyFileTo(tempFolder, executingFolder, "libEGL.dll");
-            Copy3rdPartyFileTo(tempFolder, executingFolder, "libGLESv2.dll");
-            Copy3rdPartyFileTo(tempFolder, executingFolder, "msvcp120.dll");
-            Copy3rdPartyFileTo(tempFolder, executingFolder, "msvcr120.dll");
-            Copy3rdPartyFileTo(tempFolder, executingFolder, "protobuf-net.dll");
+            Copy3rdPartyFileTo(tempFolder, executingFolder, "boiler.exe");
             Copy3rdPartyFileTo(tempFolder, executingFolder, "steam_api.dll");
             Copy3rdPartyFileTo(tempFolder, executingFolder, "steam_appid.txt");
         }
@@ -66,10 +61,9 @@ namespace RyaUploader
         private void Copy3rdPartyFileTo(string targetPath, string executingFolder, string fileName)
         {
             Log.Information($"Saving {fileName} to the temp folder.");
-            var path = Path.Combine(targetPath, "boiler.exe");
+            var path = Path.Combine(targetPath, fileName);
             var fileToCopy = Path.Combine(executingFolder, "3rdParty", fileName);
-            var fileBytes = File.ReadAllBytes(fileToCopy);
-            File.WriteAllBytes(path, fileBytes);
+            File.Copy(fileToCopy, path, true);
             Log.Information($"Finished saving {fileName} to the temp folder.");
         }
 
