@@ -8,11 +8,6 @@ using Serilog;
 
 namespace RyaUploader.Core.Services.SteamServices
 {
-    public interface ISteamApi
-    {
-        Task<Dictionary<long, PlayerProfile>> GetPlayerProfilesAsync(long[] ids);
-    }
-
     public class SteamApi : ISteamApi
     {
         private readonly IHttpClient _client;

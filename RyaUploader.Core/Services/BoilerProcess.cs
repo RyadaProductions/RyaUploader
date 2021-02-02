@@ -7,16 +7,6 @@ using Serilog;
 
 namespace RyaUploader.Core.Services
 {
-    public interface IBoilerProcess
-    {
-        /// <summary>
-        /// Start the process to get the latest matches
-        /// </summary>
-        /// <param name="cancellationToken"></param>
-        /// <returns>the exit code from boiler</returns>
-        Task<int> StartBoilerAsync(CancellationToken cancellationToken);
-    }
-
     public class BoilerProcess : IBoilerProcess
     {
         private readonly IFilePaths _filePaths;

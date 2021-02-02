@@ -3,13 +3,6 @@ using System.Threading.Tasks;
 
 namespace RyaUploader.Core.Facade
 {
-    public interface IHttpClient
-    {
-        Task<string> GetStringAsync(string requestUri);
-
-        Task<HttpResponseMessage> PostAsync(string requestUri, HttpContent content);
-    }
-
     public class HttpClientFacade : IHttpClient
     {
         private static readonly HttpClient Client = new HttpClient();

@@ -10,16 +10,6 @@ using RoundStats = RyaUploader.Core.ProtoBufs.CMsgGCCStrike15_v2_MatchmakingServ
 
 namespace RyaUploader.Core.Services.Converters
 {
-    public interface IProtobufConverter
-    {
-        /// <summary>
-        /// Convert a deserialised protobuf matchlist into mutliple MatchModels
-        /// </summary>
-        /// <param name="protobuf">Deserialised protobuf message received from Valve</param>
-        /// <returns>list of MatchModels</returns>
-        Task<List<Match>> ProtobufToMatches(List<MatchInfo> protobuf);
-    }
-
     public class ProtobufConverter : IProtobufConverter
     {
         private readonly ISteamApi _steamApi;
